@@ -26,18 +26,19 @@ public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	public int userId; 
+	private int userId; 
 	@Size(min=2, max=30, message="Please enter a user name between 2 and 30 characters")
-	public String userName; 
+	private String userName; 
 	@Size(min=2, max=20, message="The password must be between 2 and 20 characters")
-	public String password;
+	private String password;
 //	@ElementCollection
 //	@OneToMany(fetch = FetchType.EAGER)
 //	@JoinTable(name="interests",
 //			joinColumns={@JoinColumn(name="userId", referencedColumnName="userId")},
 //			inverseJoinColumns={@JoinColumn(name="interestId", referencedColumnName="interestId")})
 //	private List<Interest> interests;
-	public Boolean newsletter;
+	private Boolean newsletter;
+	private Boolean designFan; 
 	
 	
 	public User(int userId, String userName, String password, Boolean newsletter) {
@@ -94,5 +95,11 @@ public class User {
 //	public void setInterests(List<Interest> interests) {
 //		this.interests = interests;
 //	}
+	public Boolean getDesignFan() {
+		return designFan;
+	}
+	public void setDesignFan(Boolean designFan) {
+		this.designFan = designFan;
+	}
 	
 }

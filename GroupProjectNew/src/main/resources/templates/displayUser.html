@@ -21,7 +21,8 @@
 <th>ID</th>
 <th>User name</th>
 <th>Password</th>
-<th>Interests</th>
+<th>Design Fan?</th>
+<th>Newsletter</th>
 </tr>
 </thead>
 <tbody>
@@ -29,11 +30,10 @@
 <td th:text="${userId}"></td>
 <td th:text="${userName}"></td>
 <td th:text="${password}"></td>
-<td>
-<ul th:each="interest : ${interests}">
-<li th:text="${interest}"></li>
-</ul>
-</td>
+<td th:if="${user.designFan} == true" th:text="yes"></td>
+<td th:if="${user.designFan} == false" th:text="no"></td>
+<td th:if="${user.newsletter} == true" th:text="yes"></td>
+<td th:if="${user.newsletter} == false" th:text="no"></td>
 </tr>
 </tbody>
 </table>

@@ -93,10 +93,10 @@ public class UserController {
 		model.addAttribute("now", date);
 		return "displayUsers";
 	} 
-	@RequestMapping(value = "/addNew", method = RequestMethod.GET) 
-	public ModelAndView addNewUser() {   
-		return new ModelAndView("addNewUser", "user", new User());
-	} 
+//	@RequestMapping(value = "/addNew", method = RequestMethod.GET) 
+//	public ModelAndView addNewUser() {   
+//		return new ModelAndView("addNewUser", "user", new User());
+//	} 
 	
 	@RequestMapping(value = "/addNew", method = RequestMethod.POST)
 	public String displayUser(@ModelAttribute("user") @Valid User user,  
@@ -124,16 +124,16 @@ public class UserController {
 
 		return "displayUser";
 	}        
-//	@RequestMapping(value = "/addNew", method = RequestMethod.GET) 
-//	public String addNewSongwriter(ModelMap model) {  
-//
-////		List<String> interests=new ArrayList<String>();
-////		interests.add("interest1");
-////		interests.add("interst2");
-////		user.setInterests(interests);	
-//		model.addAttribute("user", user);		
-//		return "addNewUser";
-//	} 
+	@RequestMapping(value = "/addNew", method = RequestMethod.GET) 
+	public String addNewSongwriter(ModelMap model) {  
+
+//		List<String> interests=new ArrayList<String>();
+//		interests.add("interest1");
+//		interests.add("interst2");
+//		user.setInterests(interests);	
+		model.addAttribute("user", user);		
+		return "addNewUser";
+	} 
 	@RequestMapping(value = "/delete", method = RequestMethod.GET) 
 	public String deleteUser(ModelMap model) {   
 		Iterable <User> users=userJpaRepo.findAll();
@@ -190,34 +190,4 @@ public class UserController {
 		model.addAttribute("userId", user.getUserId());
 		return "displayUser";		
 	}      
-//
-//	@RequestMapping(value = "/addNew", method = RequestMethod.POST)
-//	public String displaySongwriter(@ModelAttribute("songwriter") @Valid SongwriterImpl songwriter,  
-//			BindingResult result,
-//			ModelMap model) {
-//
-//		if(result.hasErrors())
-//			return "addnewsongwriter";
-//
-//		model.addAttribute("firstname", songwriter.getFirstname());
-//		model.addAttribute("lastname", songwriter.getFirstname());
-//		model.addAttribute("age", songwriter.getAge());	
-//
-//		if(songwriter.getInterests()!=null && songwriter.getInterests().size()>0){
-//			model.addAttribute("interests", songwriter.getInterests());
-//		}
-//
-//		try {
-//			int id=songwriterDAO.createSongwriterGetID(songwriter.getFirstname(), songwriter.getLastname(), songwriter.getAge());
-//			//songwriter.setId(id);
-//			model.addAttribute("id", id);
-//			model.addAttribute("greeting", "Songwriter with the following details has been successfully added");
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//		return "displaysongwriter";
-//	}  
-//}
-//
-
 }

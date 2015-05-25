@@ -43,16 +43,16 @@
 <input type="text" th:field="*{password}" class="form-control" placeholder="Enter password"/>
 </div>
 
-<!-- <div class="form-group"> -->
-<!-- <ul> -->
-<!--    <li th:each="interest : ${user.interests}"> -->
-<!--     <input type="checkbox" th:field="*{interests}" th:value="${interest}" /> -->
-<!--     <label th:for="${#ids.prev('interests')}"  -->
-<!--            th:text="${interest}">Interest</label> -->
-<!--   </li> -->
-<!-- </ul> -->
+<div class="form-group">
+    <input type="checkbox" th:field="*{designFan}" th:value="${designFan}" />
+    <label th:for="designFan" 
+           th:text="#{user.designFan}">designFan</label>
+</div>
 
-<!-- </div> -->
+<div class="form-group">
+<input type="checkbox" th:field="*{newsletter}" th:value="${newsletter}"/>
+<label for="newsletter" th:text="#{user.newsletter}">newsletter</label>
+</div>
 
 <!-- <div class="form-group"> -->
 <!-- <select th:field="*{interests}"> -->
@@ -62,10 +62,12 @@
 <!-- </select> -->
 <!-- </div> -->
 
-<div class="form-group">
-<input type="radio" th:field="*{newsletter}" th:value="${user.newsletter}"/>
-<label for="newsletter" th:text="#{user.newsletter}">Wireframe</label>
-</div>
+<!-- 	problem with radio button, info does not get passed on to db -->
+<!-- 	checkbox above works -->
+<!-- <div class="form-group"> -->
+<!-- <input type="radio" th:field="*{newsletter}" th:value="${newsletter}"/> -->
+<!-- <label for="newsletter" th:text="#{user.newsletter}">Wireframe</label> -->
+<!-- </div> -->
 
 <div class="form-actions">
 <input type="submit" value="submit"/>
