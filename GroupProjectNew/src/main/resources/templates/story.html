@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="layout :: htmlhead" th:with="title='Story'"></head>
+<head>
+<title>Story</title>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"/>
+<link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" />
+<link type="text/css" rel="stylesheet" href="/css/bootstrap-theme.min.css" />
+<link type="text/css" rel="stylesheet" href="/css/layout.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<style type="text/css">
+	body {
+		background-image: url("http://www.personal.psu.edu/nmd5193/Project2%20Subpages/Images/cloud%20background.jpg");
+	}
+</style>
+</head>
+
+<body>
+<div th:replace="layout :: navbar">(navbar)</div>
+<p></p>	
+
+
+<div th:include="layout :: footer" id="footer">(footer)</div>
+</body>
+</html>   

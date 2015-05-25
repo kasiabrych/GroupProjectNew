@@ -1,0 +1,42 @@
+<html xmlns:th="http://www.thymeleaf.org"> 
+<head th:include="layout :: htmlhead" th:with="title='Participants'"></head>
+
+<body>
+<div th:replace="layout :: navbar">(navbar)</div>
+	<p></p>
+
+
+
+
+<div class="container">
+  <h2>Participant Table</h2>
+  <p></p>            
+  <table class="table table-bordered table-hover">
+  <thead>
+      <tr>
+        <th>Participant ID</th>
+        <th>Person ID</th>
+        <th>Person Name</th>
+        <th>Person Date</th>
+        <th>Person URL</th>
+        <th>Link</th>
+      </tr>
+    </thead>
+    <tbody>
+  <tr th:each="participant : ${Participants}">
+      <td th:text="${participant.participant_id}"></td>
+      <td th:text="${participant.person_id}"></td>
+      <td th:text="${participant.person_name}"></td>
+      <td th:text="${participant.person_date}"></td>
+      <td th:text="${participant.person_url}" ></td>
+      <td><a th:href="${participant.person_url}" class="ui-btn">Link</a></td>
+      <!-- <td><a th:href="@{/songwriter/modify/id/}+${songwriter.id}" class="ui-btn">Modify</a></td> -->
+      <!-- <td><a href="${participant.person_url}" target="${participant.person_url}">"${participant.person_url}"</a></td> -->
+</tr>
+</tbody>
+</table>
+</div>
+<div th:include="layout :: footer" id="footer">(footer)</div>
+
+</body>
+</html>    

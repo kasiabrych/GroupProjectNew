@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="layout :: htmlhead">
+<link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" />
+<link type="text/css" rel="stylesheet" href="/css/bootstrap-theme.min.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>HELLO</title>
+</head>
+<body>
+
+<!-- Facebook SDK -->
+<script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : 495409500610109,
+          xfbml      : true,
+          version    : 'v2.3'
+        });
+      };
+
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "//connect.facebook.net/en_US/sdk.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+    </script>
+    
+    <div th:replace="layout :: navbar">(navbar)</div>
+	<p> </p>
+	<p> </p>
+	
+<div class="container">
+<div id="this-carousel-id" class="carousel slide"><!-- class of slide for animation -->
+  <div class="carousel-inner">
+    <div class="item active"><!-- class of active since it's the first item -->
+      <img src="https://vaultee.herokuapp.com/img/idea.jpg" alt="Slide 1" />
+      <div class="carousel-caption">
+        <p><a href="/cho/listall"><font color="black">Cultural Heritage Objects</font></a></p>
+      </div>
+    </div>
+    <div class="item">
+      <img src="http://www.dennishollingsworth.us/archives/image/Saucer-Eyed-ptg-378-1200x480.gif" alt="" />
+      <div class="carousel-caption">
+        <p><a href="/participants/listall"><font color="white">Participants</font></a></p>
+      </div>
+    </div>
+    <div class="item">
+      <img src="http://commondestinations.winterthur.org/files/2013/06/1958.1000-Powder-horn-overall-view-1.jpg" alt="" />
+      <div class="carousel-caption">
+        <p><a href="/roles/listall"><font color="white">Roles</font></a></p>
+      </div>
+    </div>
+    <div class="item">
+      <img src="http://juliabfragoso.com/wp-content/uploads/2015/03/lion-RGB-1200x480.png" alt="" />
+      <div class="carousel-caption">
+        <p><font face="Comic sans MS" size="12">Join Here</font></p>
+      </div>
+    </div>
+  </div><!-- /.carousel-inner -->
+  <!--  Next and Previous controls below
+        href values must reference the id for this carousel -->
+    <a class="carousel-control left" href="#this-carousel-id" data-slide="prev">&lsaquo;</a>
+    <a class="carousel-control right" href="#this-carousel-id" data-slide="next">&rsaquo;</a>
+</div><!-- /.carousel -->
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+	
+  <div class="jumbotron" >
+    <h1><font face="Comic sans MS">Cooper-Hewitt Interactive Museum</font></h1>
+    <p><font face="Comic sans MS" size="16">Interact with Cultural Heritage Objects</font></p> 
+  </div>
+  
+  <div class="row">
+    <div class="col-sm-8">
+    <img class="img-rounded" src="https://images.collection.cooperhewitt.org/91713_3e03996e31c4fea6_n.jpg" width="750px" height="450px"/>
+      <h3>Column 1</h3>
+      <p>Bootstrap layout</p>
+      <p>to be determined</p>
+    </div>
+    <!-- <div class="col-sm-4">
+      <h3>Column 2</h3>
+      <p th:text="${message}"></p>
+      <p th:text="${now}"></p>
+    </div> -->
+    <div class="col-sm-4">
+      <h3>Social</h3>
+      <p>Twitter</p> 
+      <!-- Twitter link -->
+   	<a class="twitter-timeline" href="https://twitter.com/cooperhewitt" data-widget-id="592461519822188545">Tweets by @cooperhewitt</a>
+	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+      <p></p>
+      <p>Facebook</p>
+      <!-- Facebook link -->
+      <div class="fb-like" data-href="https://www.facebook.com/cooperhewitt" data-width="300" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+      <p></p>
+      <p>Instagram</p>
+      <!-- www.intagme.com -->
+	  <iframe src="http://www.intagme.com/in/?u=Y29vcGVyaGV3aXR0fHNsfDMwMHwyfDN8MTQyZmUwfG5vfDV8dW5kZWZpbmVkfHllcw==" allowTransparency="true" frameborder="0" scrolling="no" style="border:none; overflow:hidden; width:305px; height: 305px" ></iframe>
+      <p></p>
+      <p>Youtube</p>
+      <!-- youtube link -->
+     <script type="text/javascript" src="https://ytchannelembed.com/ytce-frgallery.js"></script><div style="width:100%;max-width:275px;" class="ytce" data-user="cooperhewitt" data-rows="4" data-ratio="hd" data-width="130" data-margin="15" data-desc="100" data-desc_color="9E9E9E" data-title="30" data-title_color="000000" data-https="0" data-duration="1" data-views="1" data-likes="1" data-dislikes="1" data-fav="1" data-cols="2" ></div>
+    </div>
+  </div>
+</div>
+<div th:include="layout :: footer" id="footer">(footer)</div>
+</body>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="js/jquery-1.7.2.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+  $(document).ready(function(){
+    $('.carousel').carousel();
+  });
+</script>
+</html>

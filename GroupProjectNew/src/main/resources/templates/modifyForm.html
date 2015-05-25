@@ -1,0 +1,50 @@
+<html xmlns:th="http://www.thymeleaf.org"> 
+<head th:include="layout :: htmlhead" th:with="title='Modify user'">
+</head>
+<body>
+<div th:replace="layout :: navbar">(navbar)</div>
+
+<div class="container">
+<p></p>
+
+<div class="container">
+<h2>Enter the details to modify the Songwriter</h2>
+
+
+<form th:object="${user}" role="form" >
+<!-- <form action="#" method="post" th:object="${user}" th:action="@{modify/id/{id}/password/{password}}" class="form-horizontal" role="form" > -->
+<div>
+<ul th:if="${#fields.hasErrors('*')}" class="list-group" >
+  <li th:each="err : ${#fields.errors('*')}" th:text="${err}" class="list-group-item list-group-item-danger">Input is incorrect</li>  
+</ul>
+</div>
+
+<div class="form-group" >
+<label for="id" th:text="#{modifyUser.userId}" class="control-label"></label>
+<input type="text" th:value="${user.userId}" id="id" th:disabled="true" class="form-control" />
+</div>
+
+<div class="form-group" >
+<label for="userName" th:text="#{modifyUser.userName}" class="control-label"></label>
+<input type="text" id="disabledTextInput" th:value="${user.userName}" th:disabled="true" class="form-control" />
+</div>
+
+<div class="form-group">
+<label for="password" th:text="#{modifyUser.password}" class="control-label"></label>
+<input type="text" th:value="${user.password}" id="password" class="form-control" />
+<p th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</p>
+</div>
+
+
+<div class="form-actions">
+<input type="button" value="Modify" id="modify" class="ui-button" />
+</div>
+</form>
+</div>  
+</div>
+
+<div th:include="layout :: footer" id="footer">(footer)</div>
+
+</body>
+
+</html>

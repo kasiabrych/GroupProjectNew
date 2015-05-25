@@ -1,0 +1,48 @@
+<html xmlns:th="http://www.thymeleaf.org"> 
+<head th:include="layout :: htmlhead" th:with="title='Details of the New User'"></head>
+<body>
+<div th:replace="layout :: navbar">(navbar)</div>
+<div class="container">
+
+<!-- <p>This needs to be left here </p> -->
+<!-- <p>This needs to be left here </p> -->
+
+<!-- <p>This needs to be left here </p> -->
+<!-- <p>This needs to be left here </p> -->
+
+<!-- >>>>>>> branch 'master' of https://github.com/kasiabrych/caf_group_project.git -->
+
+<p class="lead" th:text="${greeting}">(greeting)</p>
+<p class="lead" th:text="${message}">(message)</p>
+<div class="table-responsive">
+<table class="table">
+<thead>
+<tr>
+<th>ID</th>
+<th>User name</th>
+<th>Password</th>
+<th>Interests</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td th:text="${userId}"></td>
+<td th:text="${userName}"></td>
+<td th:text="${password}"></td>
+<td>
+<ul th:each="interest : ${interests}">
+<li th:text="${interest}"></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+</div>
+
+<div th:include="layout :: footer" id="footer">(footer)</div>
+
+</body>
+
+</html>        

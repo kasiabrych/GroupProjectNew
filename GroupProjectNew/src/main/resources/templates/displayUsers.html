@@ -1,0 +1,36 @@
+<html xmlns:th="http://www.thymeleaf.org"> 
+<head th:include="layout :: htmlhead" th:with="title='Users'"></head>
+
+<body>
+<div th:replace="layout :: navbar">(navbar)</div>
+	<p></p>
+
+
+
+
+<div class="container">
+  <h2>Users Table</h2>
+  <p></p>            
+  <table class="table table-bordered table-hover">
+  <thead>
+      <tr>
+      	<th>User Id</th>
+        <th>User Name</th>
+        <th>Password</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+  <tr th:each="user : ${users}">
+  	  <td th:text="${user.userId}"></td>
+      <td th:text="${user.userName}"></td>
+      <td th:text="${user.password}"></td>
+      
+</tr>
+</tbody>
+</table>
+</div>
+<div th:include="layout :: footer" id="footer">(footer)</div>
+
+</body>
+</html>    

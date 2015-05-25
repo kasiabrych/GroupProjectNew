@@ -1,0 +1,45 @@
+<html xmlns:th="http://www.thymeleaf.org"> 
+<head th:include="layout :: htmlhead" th:with="title='Images'"></head>
+
+<body>
+<div th:replace="layout :: navbar">(navbar)</div>
+	<p></p>
+	
+
+
+
+<div class="container">
+  <h2>Image Table</h2>
+  <p></p>            
+  <table class="table table-bordered table-hover">
+  <thead>
+      <tr>
+        <th>Image Number</th>
+        <th>Image URL</th>
+        <th>Image Width</th>
+        <th>Image Height</th>
+        <th>Image ID</th>
+        <!-- <th>Image Resolution</th>
+        <th>CH Object ID</th> -->
+        <th>Link</th>
+      </tr>
+    </thead>
+    <tbody>
+  <tr th:each="image : ${Images}">
+      <td th:text="${image.image_no}"></td>
+      <td th:text="${image.url}"></td>
+      <td th:text="${image.width}"></td>
+      <td th:text="${image.height}"></td>
+      <td th:text="${image.image_id}"></td>
+      <!-- <td th:text="${image.image_resolution}"></td> -->
+      <!-- <td th:text="${image.cho_id}"></td> -->
+      <td><a th:href="${image.url}" class="ui-btn">Link</a></td>
+      
+</tr>
+</tbody>
+</table>
+</div>
+<div th:include="layout :: footer" id="footer">(footer)</div>
+
+</body>
+</html>    

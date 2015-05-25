@@ -1,0 +1,36 @@
+<html xmlns:th="http://www.thymeleaf.org"> 
+<head th:include="layout :: htmlhead" th:with="title='Delete'">
+</head>
+<body>
+<div th:replace="layout :: navbar">(navbar)</div>
+<div class="container">
+
+<p>This needs to be left here </p>
+<p>This needs to be left here </p>
+
+<p class="lead" th:text="${greeting}">(greeting)</p>
+<div class="table-responsive">
+<table class="table">
+<thead>
+<tr>
+<th>User id</th>
+<th>User name</th>
+<th>Password</th>
+
+</tr>
+</thead>
+<tbody>
+<tr th:each="user : ${users}">
+     <td th:text="${user.userId}"></td>
+     <td th:text="${user.userName}"></td>
+      <td th:text="${user.password}"></td>     
+    <td><a th:href="@{/user/delete/id/}+${user.userId}" class="ui-btn">Delete</a></td>
+ 
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div th:include="layout :: footer" id="footer">(footer)</div>
+</body>
+</html>                

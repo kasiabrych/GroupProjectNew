@@ -1,0 +1,47 @@
+<html xmlns:th="http://www.thymeleaf.org"> 
+<head th:include="layout :: htmlhead" th:with="title='Cultural Heritage Objects'"></head>
+<body>
+<div th:replace="layout :: navbar">(navbar)</div>
+	<p></p>
+<div class="container">
+
+<div class="container">
+  <h2>CH Object Table</h2>
+  <p></p>            
+  <table class="table table-bordered table-hover">
+  <thead>
+      <tr>
+      	<th>ID</th>
+        <th>Title</th>
+        <th>Date</th>
+        <th>Medium</th>
+        <th>Credit Line</th>
+        <th>Description</th>
+        <th>Gallery Text</th>
+        <th>View</th>
+      </tr>
+    </thead>
+    <tbody>
+  <tr th:each="cho : ${CHOs}">
+  	  <td th:text="${cho.id}"></td>
+      <td th:text="${cho.title}"></td>
+      <td th:text="${cho.date}"></td>
+      <td th:text="${cho.medium}"></td>
+      <td th:text="${cho.creditline}"></td>
+      <td th:text="${cho.description}"></td>
+      <td th:text="${cho.gallery_text}"></td>
+      <!-- VIEW BUTTON ADDED HAVE CODE TO MAKE THE TABLE SELECTABLE -->
+      <td><a th:href="@{/cho/view/id/}+${cho.id}" class="ui-btn">View</a></td>
+      
+</tr>
+</tbody>
+</table>
+</div>
+
+</div>
+
+<div th:include="layout :: footer" id="footer">(footer)</div>
+
+</body>
+
+</html>        

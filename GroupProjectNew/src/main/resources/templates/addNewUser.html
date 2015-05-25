@@ -1,0 +1,82 @@
+<html xmlns:th="http://www.thymeleaf.org"> 
+<head th:include="layout :: htmlhead" th:with="title='Add new user'"></head>
+<body>
+<div th:replace="layout :: navbar">(navbar)</div>
+<div class="container">
+
+<!-- <p>This needs to be left here </p> -->
+<!-- <p>This needs to be left here </p> -->
+
+<div class="container">
+
+<h2>Please enter the User details. </h2>
+<form action="#" method="post" th:object="${user}" th:action="@{addNew}" class="form-horizontal" role="form" >
+<div>
+<ul th:if="${#fields.hasErrors('*')}" class="list-group" >
+  <li th:each="err : ${#fields.errors('*')}" th:text="${err}" class="list-group-item list-group-item-danger">Input is incorrect</li>  
+</ul>
+</div>
+<!-- <p class="lead" th:text="form"></p> -->
+<!-- <div class="form-group"> -->
+<!-- <label for="userName" th:text="#{addUser.userName}" class="col-sm-2 control-label"></label> -->
+<!-- <div class="col-sm-10"> -->
+<!-- <input type="text" th:field="*{userName}" class="form-control" placeholder="Enter user name"/> -->
+<!-- </div> -->
+
+<!-- </div> -->
+
+<!-- <div class="form-group"> -->
+<!-- <label for="lastname" th:text="#{addsongwriter.lastname}" class="col-sm-2 control-label"></label> -->
+<!-- <div class="col-sm-10"> -->
+<!-- <input type="text" th:field="*{lastname}" class="form-control" placeholder="Enter lastname"/> -->
+<!-- </div> -->
+<!-- </div> -->
+<!-- <p class="lead" th:text="#{form.control.vertical}"></p> -->
+<div class="form-group">
+<label for="userName" th:text="#{addUser.userName}" class="control-label"></label>
+
+<input type="text" th:field="*{userName}" class="form-control" placeholder="Enter user name"/>
+
+</div>
+<div class="form-group">
+<label for="password" th:text="#{addUser.password}" class="control-label"></label>
+<input type="text" th:field="*{password}" class="form-control" placeholder="Enter password"/>
+</div>
+
+<!-- <div class="form-group"> -->
+<!-- <ul> -->
+<!--    <li th:each="interest : ${user.interests}"> -->
+<!--     <input type="checkbox" th:field="*{interests}" th:value="${interest}" /> -->
+<!--     <label th:for="${#ids.prev('interests')}"  -->
+<!--            th:text="${interest}">Interest</label> -->
+<!--   </li> -->
+<!-- </ul> -->
+
+<!-- </div> -->
+
+<!-- <div class="form-group"> -->
+<!-- <select th:field="*{interests}"> -->
+<!--   <option th:each="interest : ${user.interests}"  -->
+<!--           th:value="${interest}"  -->
+<!--           th:text="${interest}">Interest</option> -->
+<!-- </select> -->
+<!-- </div> -->
+
+<div class="form-group">
+<input type="radio" th:field="*{newsletter}" th:value="${newsletter}"/>
+<label for="newsletter" th:text="#{user.newsletter}">Wireframe</label>
+</div>
+
+<div class="form-actions">
+<input type="submit" value="submit"/>
+</div>
+</form>
+</div>  
+</div>
+
+<div th:include="layout :: footer" id="footer">(footer)</div>
+
+</body>
+
+</html>
+       

@@ -1,0 +1,39 @@
+<html xmlns:th="http://www.thymeleaf.org"> 
+<head th:include="layout :: htmlhead" th:with="title='Roles'"></head>
+
+<body>
+<div th:replace="layout :: navbar">(navbar)</div>
+	<p></p>
+
+
+
+<div class="container">
+  <h2>Role Table</h2>
+  <p></p>            
+  <table class="table table-bordered table-hover">
+  <thead>
+      <tr>
+        <th>Role Number</th>
+        <th>Role ID</th>
+        <th>Role Name</th>
+        <th>Role Display Name</th>
+        <th>Role URL</th>
+        <th>Link</th>
+      </tr>
+    </thead>
+    <tbody>
+  <tr th:each="role : ${Roles}">
+      <td th:text="${role.role_no}"></td>
+      <td th:text="${role.role_id}"></td>
+      <td th:text="${role.role_name}"></td>
+      <td th:text="${role.role_display_name}"></td>
+      <td th:text="${role.role_url}"></td>
+      <td><a th:href="${role.role_url}" class="ui-btn">Link</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div th:include="layout :: footer" id="footer">(footer)</div>
+
+</body>
+</html>    
