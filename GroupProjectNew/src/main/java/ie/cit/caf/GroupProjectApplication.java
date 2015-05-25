@@ -28,6 +28,7 @@ import ie.cit.caf.domain.Images;
 import ie.cit.caf.domain.Participant;
 import ie.cit.caf.domain.Participation;
 import ie.cit.caf.domain.Role;
+import ie.cit.caf.entity.Interest;
 import ie.cit.caf.entity.User;
 import ie.cit.caf.fileFinder.FileFinder;
 import ie.cit.caf.jparepo.ChoJpaRepo;
@@ -178,9 +179,10 @@ public class GroupProjectApplication extends WebMvcConfigurerAdapter implements 
 		User user = new User();
 		user.setUserName("Brian"); 
 		user.setPassword("password");
+		user.setNewsletter(true);
 		
 		userJpaRepo.save(user); 
-		
+	
 		System.out.println(user);
 		
 	}

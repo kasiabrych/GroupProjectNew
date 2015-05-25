@@ -35,13 +35,21 @@ public class User {
 //	@OneToMany(fetch = FetchType.EAGER)
 //	@JoinTable(name="interests",
 //			joinColumns={@JoinColumn(name="userId", referencedColumnName="userId")},
-//			inverseJoinColumns={@JoinColumn(name="interestId", referencedColumnName="interests")})
-//	private List<Interests> interests;
-	private Boolean newsletter;
+//			inverseJoinColumns={@JoinColumn(name="interestId", referencedColumnName="interestId")})
+//	private List<Interest> interests;
+	public Boolean newsletter;
 	
 	
+	public User(int userId, String userName, String password, Boolean newsletter) {
+		super();
+		this.userId = userId;
+		this.userName = userName;
+		this.password = password;
+		this.newsletter = newsletter;
+	}
 	public User() {
 		super();
+		System.out.println("Empty constructor getting user to create users");
 	}
 	public User(int userId, String userName, String password) {
 		super();
@@ -73,17 +81,18 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-//	public List<Interests> getInterests() {
-//		return interests;
-//	}
-//	public void setInterests(List<String> interests2) {
-//		this.interests = interests2;
-//	}
+	
 	public Boolean getNewsletter() {
 		return newsletter;
 	}
 	public void setNewsletter(Boolean newsletter) {
 		this.newsletter = newsletter;
 	}
+//	public List<Interest> getInterests() {
+//		return interests;
+//	}
+//	public void setInterests(List<Interest> interests) {
+//		this.interests = interests;
+//	}
 	
 }

@@ -4,8 +4,8 @@
 <div th:replace="layout :: navbar">(navbar)</div>
 <div class="container">
 
-<!-- <p>This needs to be left here </p> -->
-<!-- <p>This needs to be left here </p> -->
+<p>This needs to be left here </p>
+<p>This needs to be left here </p>
 
 <div class="container">
 
@@ -63,7 +63,7 @@
 <!-- </div> -->
 
 <div class="form-group">
-<input type="radio" th:field="*{newsletter}" th:value="${newsletter}"/>
+<input type="radio" th:field="*{newsletter}" th:value="${user.newsletter}"/>
 <label for="newsletter" th:text="#{user.newsletter}">Wireframe</label>
 </div>
 
