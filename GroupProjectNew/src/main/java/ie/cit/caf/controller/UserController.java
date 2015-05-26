@@ -33,13 +33,13 @@ public class UserController {
 	User user; 
 	List<String> interests=new ArrayList <String>();
 	
-	@RequestMapping(value={"/signup"}, method = RequestMethod.GET)
+/*	@RequestMapping(value={"/signup"}, method = RequestMethod.GET)
 	public String showSignupPage(ModelMap model) { 
 		Date date = new java.util.Date();		
 		model.addAttribute("message", "This is Cooper-Hewit Interactive signup page.");
 		model.addAttribute("now", date);
 		return "signup";
-	}
+	}*/
 	
 	@RequestMapping(value="/login", method = RequestMethod.GET)
 	public ModelAndView login(
@@ -73,30 +73,6 @@ public class UserController {
 		model.addAttribute("message", "This is Cooper-Hewit Interactive logout page.");
 		model.addAttribute("now", date);
 		return "logout";
-	}
-	
-	@RequestMapping(value={"/leaderboard"}, method = RequestMethod.GET)
-	public String showLeaderboardPage(ModelMap model) { 
-		Date date = new java.util.Date();		
-		model.addAttribute("message", "This is Cooper-Hewit Interactive leaderboard page.");
-		model.addAttribute("now", date);
-		return "leaderboard";
-	}
-	
-	@RequestMapping(value={"/share"}, method = RequestMethod.GET)
-	public String showsharePage(ModelMap model) { 
-		Date date = new java.util.Date();		
-		model.addAttribute("message", "This is Cooper-Hewit Interactive share page.");
-		model.addAttribute("now", date);
-		return "share";
-	}
-	
-	@RequestMapping(value={"/subscribe"}, method = RequestMethod.GET)
-	public String showStoryPage(ModelMap model) { 
-		Date date = new java.util.Date();		
-		model.addAttribute("message", "This is Cooper-Hewit Interactive subscribe page.");
-		model.addAttribute("now", date);
-		return "subscribe";
 	}
 	
 	/*@RequestMapping(value={"/login"}, method = RequestMethod.GET)

@@ -1,47 +1,26 @@
 <!DOCTYPE html>
- 
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:include="layout :: htmlhead" th:with="title='Subscribe'"></head>
- 
-  <head>
-    <title>Subscribe</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link rel="stylesheet" type="text/css" media="all"
-      href="../../css/thvsjsp.css" th:href="@{/css/thvsjsp.css}"/>
-  </head>
- 
-  <body>
- 
-    <h2>Subscribe to our Mailing List</h2>
- 
-    <form action="#" th:object="${subscription}" th:action="@{/subscribeth}">
- 
-      <fieldset>
- 
-        <div>
-          <label for="email" th:text="#{subscription.email}">Email: </label>
-          <input type="text" th:field="*{email}" />
-        </div>
-        <div>
-          <label th:text="#{subscription.type}">Type: </label>
-          <ul>
-            <li th:each="type : ${allTypes}">
-              <input type="radio" th:field="*{subscriptionType}" th:value="${type}" />
-              <label th:for="${#ids.prev('subscriptionType')}"
-                th:text="#{'subscriptionType.'+${type}}">All Updates</label>
-            </li>
-            <li th:remove="all"><input type="radio" /> <label>Monthly Review</label></li>
-          </ul>
-        </div>
- 
-        <div class="submit">
-          <button type="submit" name="save" th:text="#{subscription.submit}">Subscribe</button>
-        </div>
- 
-      </fieldset>
- 
-    </form>
- 
-  </body>
- 
-</html>
+<head>
+<title>Story</title>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"/>
+<link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" />
+<link type="text/css" rel="stylesheet" href="/css/bootstrap-theme.min.css" />
+<link type="text/css" rel="stylesheet" href="/css/layout.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<style type="text/css">
+	body {
+		background-image: url("http://www.personal.psu.edu/nmd5193/Project2%20Subpages/Images/cloud%20background.jpg");
+	}
+</style>
+</head>
+
+<body>
+<div th:replace="layout :: navbar">(navbar)</div>
+<p></p>	
+
+
+<div th:include="layout :: footer" id="footer">(footer)</div>
+</body>
+</html>   
