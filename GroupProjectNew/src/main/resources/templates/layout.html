@@ -32,7 +32,24 @@ $(function() {
 $("#modify").click(function(){          
        var password = $("#password").val();
        var id = $("#id").val();
-       var url="/user/modify/id/"+id+"/password/"+password; 
+       var newsletter = $("#newsletter").val();
+       var design = $("#design").val();
+       var url="/user/modify/id/"+id+"/password/"+password+"/"+design+"/"+newsletter; 
+       /* window.alert(url); */
+      location.href=url;
+});
+});
+</script>
+
+
+<script type="text/javascript">
+
+$(function() {
+    
+$("#find").click(function(){          
+       var medium = $("#medium").val();
+     
+       var url="/cho/medium/like/"+medium; 
        /* window.alert(url); */
       location.href=url;
 });
@@ -58,7 +75,15 @@ $("#modify").click(function(){
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <li class="active"><a href="/home">Home</a></li>
-		<li><a href="/cho/listall">CH Objects</a></li>
+		 <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Cultural Heritage Objects
+          <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+          <li><a href="/cho/listall">List all</a></li>
+            <li><a href="/cho/medium">Find by Medium</a></li>
+            
+          </ul>
+        </li>
 		<li><a href="/participants/listall">Participants</a></li>
 		<li><a href="/roles/listall">Roles</a></li>
 		<li><a href="/images/listall">Images</a></li>
@@ -79,6 +104,16 @@ $("#modify").click(function(){
             <li><a href="/story">Story</a></li>
             <li><a href="/team">Team</a></li>
             <li><a href="/contact">Contact</a></li> 
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">User
+          <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="/user/listall">All Users</a></li>
+            <li><a href="/user/addNew">Add New</a></li>
+            <li><a href="/user/modify">Modify</a></li>
+            <li><a href="/user/delete">Delete</a></li> 
           </ul>
         </li>
       </ul>

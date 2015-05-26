@@ -242,7 +242,7 @@ public class GroupProjectApplication extends WebMvcConfigurerAdapter implements 
 //		String why = "why is this not working"; 
 //		System.out.println(why);
 	}
-	 /*@Order(SecurityProperties.ACCESS_OVERRIDE_ORDER)
+	 @Order(SecurityProperties.ACCESS_OVERRIDE_ORDER)
 	    protected static class ApplicationSecurity extends WebSecurityConfigurerAdapter {
 
 	        @Autowired
@@ -273,6 +273,6 @@ public class GroupProjectApplication extends WebMvcConfigurerAdapter implements 
 	    @Bean
 	    public ApplicationSecurity applicationSecurity() {
 	    return new ApplicationSecurity();
-	    }*/
+	    }
 
 }

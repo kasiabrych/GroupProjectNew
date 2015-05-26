@@ -49,6 +49,12 @@ public class CHOController {
 		return "displayCHO";
 
 	}
+	@RequestMapping (value="/medium", method = RequestMethod.GET)
+	public String choByMedium(ModelMap model){
+
+		return "findByMedium";
+
+	}
 	//	//METHOD IM HAVING ISSUE WITH
 	//		@RequestMapping(value = "/view/id/{id}", method = RequestMethod.GET)
 	//	    public String viewCHObject(@PathVariable int id, ModelMap model) {

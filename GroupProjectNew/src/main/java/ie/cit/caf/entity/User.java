@@ -50,7 +50,7 @@ public class User {
 	}
 	public User() {
 		super();
-		System.out.println("Empty constructor getting user to create users");
+		System.out.println("Empty constructor creating users");
 	}
 	public User(int userId, String userName, String password) {
 		super();

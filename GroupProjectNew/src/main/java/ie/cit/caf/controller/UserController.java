@@ -208,6 +208,8 @@ public class UserController {
 		model.addAttribute("userName", userDelete.getUserName());
 		model.addAttribute("password", userDelete.getPassword());
 		model.addAttribute("userId", userDelete.getUserId());
+		model.addAttribute("newsletter", userDelete.getNewsletter());
+		model.addAttribute("designFan", userDelete.getDesignFan());
 		return "displayUser";
 	} 
 	@RequestMapping(value="/modify", method = RequestMethod.GET) 
@@ -229,8 +231,10 @@ public class UserController {
 //		return new ModelAndView("modifyForm", "user", user);
 //	} 
 //	
-	@RequestMapping(value={"/modify/id/{id}/password/{password}"},  method = RequestMethod.GET) 
-	public String modifyUser(@ModelAttribute("user") @PathVariable int id, @PathVariable String password,  
+	@RequestMapping(value={"/modify/id/{id}/password/{password}/{designFan}/{newsletter}"},  method = RequestMethod.GET) 
+	public String modifyUser(@ModelAttribute("user") 
+		@PathVariable int id, @PathVariable String password, 
+		 @PathVariable boolean newsletter, @PathVariable boolean designFan, 
 			ModelMap model, @Valid User user,  
 			BindingResult result) {	
 		
@@ -242,11 +246,15 @@ public class UserController {
 		//userJpaRepo.updatePassword(id, password); 
 		user = userJpaRepo.findOne(id); 
 		user.setPassword(password);
+		user.setDesignFan(designFan);
+		user.setNewsletter(newsletter);
 		userJpaRepo.save(user); 
 		model.addAttribute("message", "User with id "+ id +" has been modified");
 		model.addAttribute("userName", user.getUserName());
 		model.addAttribute("password", user.getPassword());
 		model.addAttribute("userId", user.getUserId());
+		model.addAttribute("newsletter", user.getNewsletter());
+		model.addAttribute("designFan", user.getDesignFan());
 		return "displayUser";		
 	}  
 	

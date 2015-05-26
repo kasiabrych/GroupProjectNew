@@ -42,6 +42,17 @@
 <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</p>
 </div>
 
+<div class="form-group">
+    <input type="checkbox" th:field="*{designFan}" th:value="${user.designFan}" id="design"/>
+    <label th:for="designFan" 
+           th:text="#{user.designFan}">designFan</label>
+</div>
+
+<div class="form-group">
+<input type="checkbox" th:field="*{newsletter}" th:value="${user.newsletter}" id="newsletter" />
+<label for="newsletter" th:text="#{user.newsletter}">newsletter</label>
+</div>
+
 
 <div class="form-actions">
 <input type="button" value="Modify" id="modify" class="ui-button" />
