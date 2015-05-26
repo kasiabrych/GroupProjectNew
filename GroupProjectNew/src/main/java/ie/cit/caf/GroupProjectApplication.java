@@ -1,34 +1,11 @@
 
 package ie.cit.caf;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.boot.autoconfigure.security.SecurityProperties;
-import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.support.ReloadableResourceBundleMessageSource;
-import org.springframework.core.annotation.Order;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
-import org.springframework.web.servlet.i18n.CookieLocaleResolver;
-import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
-
 import ie.cit.caf.config.DefaultConfig;
 import ie.cit.caf.domain.CHObject;
-import ie.cit.caf.domain.Image;
 import ie.cit.caf.domain.Images;
 import ie.cit.caf.domain.Participant;
 import ie.cit.caf.domain.Participation;
 import ie.cit.caf.domain.Role;
-import ie.cit.caf.entity.Interest;
 import ie.cit.caf.entity.User;
 import ie.cit.caf.fileFinder.FileFinder;
 import ie.cit.caf.jparepo.ChoJpaRepo;
@@ -37,33 +14,20 @@ import ie.cit.caf.jparepo.ParticipantJpaRepo;
 import ie.cit.caf.jparepo.ParticipationJpaRepo;
 import ie.cit.caf.jparepo.RoleJpaRepo;
 import ie.cit.caf.jparepo.UserJpaRepo;
-import ie.cit.caf.repository.CHORepository;
-import ie.cit.caf.repository.ImageRepository;
-import ie.cit.caf.repository.ImagesRepository;
-import ie.cit.caf.repository.JdbcImagesRepo;
-import ie.cit.caf.repository.ParticipantRepository;
-import ie.cit.caf.repository.ParticipationRepository;
-import ie.cit.caf.repository.RoleRepository;
-import ie.cit.caf.rowmapper.CHORowMapper;
 import ie.cit.caf.service.CHObjectService;
 import ie.cit.caf.service.ImagesService;
 import ie.cit.caf.service.ParticipantService;
 import ie.cit.caf.service.ParticipationService;
 import ie.cit.caf.service.RoleService;
 
-import java.io.IOException;
 import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
 import org.springframework.core.annotation.Order;
@@ -74,12 +38,9 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
-import org.springframework.boot.autoconfigure.security.SecurityProperties;
 /*
  * author Kasia Brych (R00048777)
  * AssignmentApplication class: 
@@ -281,7 +242,7 @@ public class GroupProjectApplication extends WebMvcConfigurerAdapter implements 
 //		String why = "why is this not working"; 
 //		System.out.println(why);
 	}
-	 @Order(SecurityProperties.ACCESS_OVERRIDE_ORDER)
+	 /*@Order(SecurityProperties.ACCESS_OVERRIDE_ORDER)
 	    protected static class ApplicationSecurity extends WebSecurityConfigurerAdapter {
 
 	        @Autowired
@@ -312,6 +273,6 @@ public class GroupProjectApplication extends WebMvcConfigurerAdapter implements 
 	    @Bean
 	    public ApplicationSecurity applicationSecurity() {
 	    return new ApplicationSecurity();
-	    }
+	    }*/
 
 }

@@ -32,9 +32,12 @@ $("#view").click(function(){
 
 <div th:replace="layout :: navbar">(navbar)</div>
 <p></p>
+<p></p>
 	
 <div class="container">
 
+	<p></p>
+	<p></p>
   <h2>CH Object
   <a class="btn btn-default glyphicon glyphicon-fire"></a>
   <a class="btn btn-default glyphicon glyphicon-trash"></a>
@@ -90,13 +93,13 @@ $("#view").click(function(){
   </div>
   
   <!-- ID IS DiSPLAYING NOTHING ELSE -->
-  <p th:text="${id}" ></p>
+  <!-- <p th:text="${id}" ></p>
   <p th:text="${chobject.title}" ></p>
   <p th:text="${chobject.date}" ></p>
   <p th:text="${chobject.medium}" ></p>
   <p th:text="${chobject.creditline}" ></p>
   <p th:text="${chobject.description}" ></p>
-  <p th:text="${chobject.gallery_text}" ></p>
+  <p th:text="${chobject.gallery_text}" ></p> -->
  
 <!--   <p th:text="${chobject.participant.participant_id}" ></p> -->
 
@@ -105,22 +108,99 @@ $("#view").click(function(){
   
  <!--  TABLE WONT BE USED JUST TRYING TO DISPAY DATA -->
   <table class="table table-bordered table-hover">
+  <h2>Participated in this object</h2>
   <thead>
       <tr>
-      	<th>ID</th>
-        <th>Title</th>
-        <th>Date</th>
-        <th>Medium</th>
-        <th>Credit Line</th>
-        <th>Description</th>
-        <th>Gallery Text</th>
+      	<th>Person ID</th>
+        <th>Person Name</th>
+        <th>Role Details</th>
+        <th>Person URL</th>
+        <th>Link</th>
       </tr>
     </thead>
     <tbody>
+    
+   <!--  private int participantId; 
+	private String person_id; 
+	@Column(name="person_name")
+	private String personName; 
+	private String person_date; 
+	private String person_url; -->
+	
+		<!-- private int role_no; 
+	
+	private String role_id;
+	private String role_name; 
+	private String role_display_name; 
+	private String role_url; -->
+    
+   <!--  role.role_no}"></td>
+      <td th:text="${role.role_id}"></td>
+      <td th:text="${role.role_name}"></td>
+      <td th:text="${role.role_display_name}"></td>
+      <td th:text="${role.role_url}"></td>
+      <td><a th:href="${role.role_url -->
+      
+      
     <tr th:each="participation : ${participations}">
       <td th:text="${participation.participation_id}"></td>
       <td th:text="${participation.participant.person_name}"></td>
       <td th:text="${participation.role}"></td>
+      <td th:text="${participation.participant.person_url}"></td>
+      <td><a th:href="${participation.participant.person_url}" class="ui-btn">Link</a></td>
+     
+      
+  	  <!-- <td th:text="${id}"></td>
+      <td th:text="${title}"></td>
+      <td th:text="${date}"></td>
+      <td th:text="${medium}"></td>
+      <td th:text="${creditline}"></td>
+      <td th:text="${description}"></td> -->
+<!--       <tr> -->
+<!--       <tr th:each="images : ${images}"> -->
+<!--       <td th:text="${images.image_id}"></td> -->
+      
+</tr>
+</tbody>
+</table>
+<p></p>
+<p></p>
+<h2>Roles of this object</h2>
+ <!--  TABLE WONT BE USED JUST TRYING TO DISPAY DATA -->
+  <table class="table table-bordered table-hover">
+  <thead>
+      <tr>
+      	<th>Role ID</th>
+        <th>Role Name</th>
+        <th>Role Display Name</th>
+        <th>Role URL</th>
+        <th>Link</th>
+      </tr>
+    </thead>
+    <tbody>
+    	
+		<!-- private int role_no; 
+	
+	private String role_id;
+	private String role_name; 
+	private String role_display_name; 
+	private String role_url; -->
+    
+   <!--  role.role_no}"></td>
+      <td th:text="${role.role_id}"></td>
+      <td th:text="${role.role_name}"></td>
+      <td th:text="${role.role_display_name}"></td>
+      <td th:text="${role.role_url}"></td>
+      <td><a th:href="${role.role_url -->
+      
+      
+    <tr th:each="participation : ${participations}">
+      <td th:text="${participation.role.role_id}"></td>
+      <td th:text="${participation.role.role_name}"></td>
+      <td th:text="${participation.role.role_display_name}"></td>
+      <td th:text="${participation.role.role_url}"></td>
+      <td><a th:href="${participation.role.role_url}" class="ui-btn">Link</a></td>
+      
   	  <!-- <td th:text="${id}"></td>
       <td th:text="${title}"></td>
       <td th:text="${date}"></td>

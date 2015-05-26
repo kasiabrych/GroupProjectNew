@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -40,13 +41,71 @@ public class UserController {
 		return "signup";
 	}
 	
-	@RequestMapping(value={"/login"}, method = RequestMethod.GET)
+	@RequestMapping(value="/login", method = RequestMethod.GET)
+	public ModelAndView login(
+	       @RequestParam(value = "error", required = false) String error,
+	       @RequestParam(value = "logout", required = false) String logout) {
+	             
+	       ModelAndView model = new ModelAndView();
+	       if (error != null) {
+	                     model.addObject("error", "Invalid username and password!");
+	              }
+	      
+	       if (logout != null) {
+	              model.addObject("msg", "You've been logged out successfully.");
+	       }
+	       model.setViewName("login");
+	      
+	       return model;
+	}
+
+	/*@RequestMapping(value={"/login"}, method = RequestMethod.GET)
+	public String showContactPage(ModelMap model) { 
+		Date date = new java.util.Date();		
+		model.addAttribute("message", "This is Cooper-Hewit Interactive login page.");
+		model.addAttribute("now", date);
+		return "login";
+	}*/
+	
+	@RequestMapping(value={"/logout"}, method = RequestMethod.GET)
+	public String showTeamPage(ModelMap model) { 
+		Date date = new java.util.Date();		
+		model.addAttribute("message", "This is Cooper-Hewit Interactive logout page.");
+		model.addAttribute("now", date);
+		return "logout";
+	}
+	
+	@RequestMapping(value={"/leaderboard"}, method = RequestMethod.GET)
+	public String showLeaderboardPage(ModelMap model) { 
+		Date date = new java.util.Date();		
+		model.addAttribute("message", "This is Cooper-Hewit Interactive leaderboard page.");
+		model.addAttribute("now", date);
+		return "leaderboard";
+	}
+	
+	@RequestMapping(value={"/share"}, method = RequestMethod.GET)
+	public String showsharePage(ModelMap model) { 
+		Date date = new java.util.Date();		
+		model.addAttribute("message", "This is Cooper-Hewit Interactive share page.");
+		model.addAttribute("now", date);
+		return "share";
+	}
+	
+	@RequestMapping(value={"/subscribe"}, method = RequestMethod.GET)
+	public String showStoryPage(ModelMap model) { 
+		Date date = new java.util.Date();		
+		model.addAttribute("message", "This is Cooper-Hewit Interactive subscribe page.");
+		model.addAttribute("now", date);
+		return "subscribe";
+	}
+	
+	/*@RequestMapping(value={"/login"}, method = RequestMethod.GET)
 	public String showLoginPage(ModelMap model) { 
 		Date date = new java.util.Date();		
 		model.addAttribute("message", "This is Cooper-Hewit Interactive login page.");
 		model.addAttribute("now", date);
 		return "login";
-	}
+	}*/
 
 
 	@RequestMapping(value="/listall", method = RequestMethod.GET) 
@@ -189,5 +248,7 @@ public class UserController {
 		model.addAttribute("password", user.getPassword());
 		model.addAttribute("userId", user.getUserId());
 		return "displayUser";		
-	}      
+	}  
+	
+	
 }
