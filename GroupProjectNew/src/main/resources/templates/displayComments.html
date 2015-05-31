@@ -1,0 +1,43 @@
+<html xmlns:th="http://www.thymeleaf.org"> 
+<head th:include="layout :: htmlhead" th:with="title='Comments'"></head>
+
+<body>
+<div th:replace="layout :: navbar">(navbar)</div>
+
+<p>This needs to be left here </p>
+<p>This needs to be left here </p>
+
+<div class="container">
+  <h2>Comments</h2>
+  <p></p>            
+  <table class="table table-bordered table-hover">
+  <thead>
+      <tr>
+        <th>Comment id</th>
+        <th>Object id</th>
+        <th>Comment</th>
+      </tr>
+    </thead>
+    <tbody>
+  <tr th:each="comment : ${comments}">
+      <td th:text="${comment.commentId}"></td>
+      <td th:text="${comment.choId}"></td>
+      <td th:text="${comment.commentText}"></td>
+</tr>
+</tbody>
+</table>
+<ul class="pagination">
+  <li><a href='#'>Prev</a></li>
+  <li class="active"><a href="#">1</a></li>
+  <li><a href="#">2</a></li>
+  <li><a href="#">3</a></li>
+  <li><a href="#">4</a></li>
+  <li><a href="#">5</a></li>
+  <li><a href='#'>Next</a></li>
+</ul>
+</div>
+
+<div th:include="layout :: footer" id="footer">(footer)</div>
+
+</body>
+</html>    

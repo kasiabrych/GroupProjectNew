@@ -70,6 +70,52 @@ $("#findid").click(function(){
 });
 </script>
 
+<!-- the script below generates a url that allows the user to add comments to a particular cho
+choId is passed as path variable so it can be accessed when the addNew template is displayed -->
+<script type="text/javascript">
+
+$(function() {
+    
+$("#addComment").click(function(){          
+       var choid = parseInt($("#choid").val());
+     
+       var url="/comment/"+choid+"/addNew"; 
+       /* window.alert(url); */
+      location.href=url;
+});
+});
+</script>
+
+<!-- the script below generates allows users to search for comments that contain certain words -->
+<script type="text/javascript">
+
+$(function() {
+    
+$("#findCText").click(function(){          
+       var text = $("#cText").val();
+     
+       var url="/comment/text/contains/"+text; 
+       /* window.alert(url); */
+      location.href=url;
+});
+});
+</script>
+
+<!-- script allowing the user to find all comments for a particular cho -->
+<script type="text/javascript">
+
+$(function() {
+    
+$("#findCommentChoId").click(function(){          
+       var choid = parseInt($("#commentChoId").val());
+     
+       var url="/comment/list/id/"+choid; 
+       /* window.alert(url); */
+      location.href=url;
+});
+});
+</script>
+
 </head>
 
 <body>

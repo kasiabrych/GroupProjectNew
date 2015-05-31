@@ -1,0 +1,43 @@
+<html xmlns:th="http://www.thymeleaf.org"> 
+<head th:include="layout :: htmlhead" th:with="title='Add comment'"></head>
+<body>
+<div th:replace="layout :: navbar">(navbar)</div>
+<div class="container">
+
+<p>This needs to be left here </p>
+<p>This needs to be left here </p>
+
+<div class="container">
+
+<h2>Please enter your comment. </h2>
+<form action="#" method="post" th:object="${comment}" th:action="@{addNew}" class="form-horizontal" role="form" >
+<!-- <div> -->
+<!-- <ul th:if="${#fields.hasErrors('*')}" class="list-group" > -->
+<!--   <li th:each="err : ${#fields.errors('*')}" th:text="${err}" class="list-group-item list-group-item-danger">Input is incorrect</li>   -->
+<!-- </ul> -->
+<!-- </div> -->
+
+<div class="form-group">
+<label for="choId" th:text="#{comment.choId}" class="control-label"></label>
+
+<input type="text" th:field="*{choId}" class="form-control" placeholder="choId"/>
+
+</div>
+<div class="form-group">
+<label for="commentText" th:text="#{comment.commentText}" class="control-label"></label>
+<input type="text" th:field="*{commentText}" class="form-control" placeholder="Provide your comment here"/>
+</div>
+
+<div class="form-actions">
+<input type="submit" value="submit"/>
+</div>
+</form>
+</div>  
+</div>
+
+<div th:include="layout :: footer" id="footer">(footer)</div>
+
+</body>
+
+</html>
+       
