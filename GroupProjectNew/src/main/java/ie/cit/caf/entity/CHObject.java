@@ -1,5 +1,7 @@
 package ie.cit.caf.entity;
 
+import ie.cit.caf.entity.Images;
+
 import java.util.List;
 import java.util.Map;
 
@@ -29,12 +31,6 @@ public class CHObject {
 			inverseJoinColumns={@JoinColumn(name="participation_id", referencedColumnName="participation_id")})
 	private List<Participation> participations; 
 	
-//	@OneToMany(fetch = FetchType.EAGER)
-//	@JoinTable(name="cho_images",
-//			joinColumns={@JoinColumn(name="cho_id", referencedColumnName="id")},
-//			inverseJoinColumns={@JoinColumn(name="image_no", referencedColumnName="image_no")})
-//	public List<Map<String, Image>> images; 
-
 	
 	@Override
 	public String toString() {

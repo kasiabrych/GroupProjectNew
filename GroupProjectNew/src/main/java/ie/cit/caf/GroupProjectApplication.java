@@ -1,5 +1,6 @@
 
 package ie.cit.caf;
+import ie.cit.caf.config.ApplicationSecurity;
 import ie.cit.caf.config.DefaultConfig;
 import ie.cit.caf.domain.CHObject;
 import ie.cit.caf.domain.Images;
@@ -21,26 +22,41 @@ import ie.cit.caf.service.ParticipationService;
 import ie.cit.caf.service.RoleService;
 
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.sql.DataSource;
+
+import org.hibernate.SessionFactory;
+import org.hibernate.jpa.HibernateEntityManagerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.core.annotation.Order;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.security.authentication.encoding.PasswordEncoder;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.annotation.web.servlet.configuration.EnableWebMvcSecurity;
+import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 /*
  * author Kasia Brych (R00048777)
  * AssignmentApplication class: 
@@ -50,6 +66,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @SpringBootApplication
 @ActiveProfiles ("default")
 @Import(DefaultConfig.class)
+@Configuration
+@EnableWebMvcSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class GroupProjectApplication extends WebMvcConfigurerAdapter implements CommandLineRunner {
 
 	//ChoJpaRepo and ImagesJpaRepo to be replaced with service class
@@ -77,7 +96,7 @@ public class GroupProjectApplication extends WebMvcConfigurerAdapter implements 
 	ParticipantService participantService; 
 	@Autowired 
 	ParticipationService participationService; 
-
+	
 	public static void main(String[] args) {
 		SpringApplication.run(GroupProjectApplication.class, args);
 	}
@@ -133,14 +152,18 @@ public class GroupProjectApplication extends WebMvcConfigurerAdapter implements 
 		//jpaPartAndRole(); 
 		//jpaParticipation(); 
 		//joiningChoAndParticipations(); 
-		createUser(); 
-	} 
+		//createUser(); 
+		
+		
+	}
 
 	private void createUser() {
 		User user = new User();
-		user.setUserName("Brian"); 
+		user.setUsername("Brian"); 
 		user.setPassword("password");
 		user.setNewsletter(true);
+		user.setDesignFan(false);
+		user.setEnabled(true); 
 		
 		userJpaRepo.save(user); 
 	
@@ -242,29 +265,7 @@ public class GroupProjectApplication extends WebMvcConfigurerAdapter implements 
 //		String why = "why is this not working"; 
 //		System.out.println(why);
 	}
-	 @Order(SecurityProperties.ACCESS_OVERRIDE_ORDER)
-	    protected static class ApplicationSecurity extends WebSecurityConfigurerAdapter {
-
-	        @Autowired
-	        private SecurityProperties security;
-
-	        @Override
-	        protected void configure(HttpSecurity http) throws Exception {
-	        	
-	        	  http
-	              .authorizeRequests().antMatchers("/","/hello").permitAll().anyRequest()
-	              .fullyAuthenticated().and().formLogin().loginPage("/login")
-	              .failureUrl("/login?error").permitAll()
-	              .and()
-	              .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login?logout");
-	              ;
-	        	
-	        }
-	        @Override
-	        public void configure(AuthenticationManagerBuilder auth) throws Exception {
-	            auth.inMemoryAuthentication().withUser("user").password("user").roles("USER");
-	        }
-	    }
+	
 	 @Override
 	    public void addViewControllers(ViewControllerRegistry registry) {
 	    registry.addViewController("/login").setViewName("login");

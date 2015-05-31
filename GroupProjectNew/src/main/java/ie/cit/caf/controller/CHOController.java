@@ -3,8 +3,10 @@ package ie.cit.caf.controller;
 import java.util.List;
 
 import ie.cit.caf.domain.CHObject;
+import ie.cit.caf.entity.Images;
 import ie.cit.caf.entity.Participation;
 import ie.cit.caf.jparepo.ChoJpaRepo;
+import ie.cit.caf.jparepo.ImagesJpaRepo;
 import ie.cit.caf.repository.CHORepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,9 @@ public class CHOController {
 
 	@Autowired
 	ChoJpaRepo choJpaRepo;
+	
+	@Autowired
+	ImagesJpaRepo imageRepo;
 
 	@RequestMapping(value="/listall", method = RequestMethod.GET) 
 	public String listAll(ModelMap model) {			
@@ -49,7 +54,7 @@ public class CHOController {
 		return "displayCHO";
 
 	}
-	@RequestMapping (value="/medium", method = RequestMethod.GET)
+	@RequestMapping (value="/search", method = RequestMethod.GET)
 	public String choByMedium(ModelMap model){
 
 		return "findByMedium";
@@ -72,5 +77,13 @@ public class CHOController {
 		model.addAttribute("chobject", chobjectView);
 		model.addAttribute("participations", part); 
 		return "viewCHO"; } 
+	
+	@RequestMapping(value = "/image/{id}", method = RequestMethod.GET)
+	public String viewImage(@PathVariable int id, ModelMap model) {
+		Images image =  imageRepo.findByChoIdAndImageResolution(id, "B");
+		
+		String imageUrl = image.getUrl(); 
+		model.addAttribute("image", imageUrl); 
+		return "image"; } 
 
 }                      

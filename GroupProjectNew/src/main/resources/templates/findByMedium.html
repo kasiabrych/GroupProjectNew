@@ -15,7 +15,7 @@
 <p>This needs to be left here </p>
 
 
-<h2>Please enter the medium</h2>
+<h2>Please specify your search category</h2>
 
 <form>
 <div class="form-group">
@@ -25,6 +25,16 @@
 
 <div class="form-actions">
 <input type="button" value="Find" id="find" class="ui-button" />
+</div>
+</form>
+<form>
+<div class="form-group">
+<label for="id" th:text="#{id.prompt}" class="control-label"></label>
+<input type="text"  id="id" class="form-control" />
+</div>
+
+<div class="form-actions">
+<input type="button" value="Find by ID" id="findid" class="ui-button" />
 </div>
 </form>
 </div>  

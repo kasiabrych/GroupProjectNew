@@ -134,9 +134,9 @@ public class UserController {
 		}*/
 
 	@RequestMapping(value="/list/{userName}", method=RequestMethod.GET)
-	public String listUserByUserName(@PathVariable String userName,  ModelMap model){		
+	public String listUserByUserName(@PathVariable String username,  ModelMap model){		
 		Date date = new java.util.Date();		
-		List<User> users=userJpaRepo.findByUserName(userName); 
+		User users=userJpaRepo.findByUsername(username); 
 		model.addAttribute("users", users);
 		model.addAttribute("now", date);
 		return "displayUsers";
@@ -164,8 +164,13 @@ public class UserController {
 		if(result.hasErrors())
 			return "addNewUser";                           
 		
-		model.addAttribute("userName", user.getUserName());
+		model.addAttribute("username", user.getUsername());
 		model.addAttribute("password", user.getPassword()); 
+		model.addAttribute("username", user.getUsername());
+		model.addAttribute("password", user.getPassword());
+		model.addAttribute("userId", user.getUserId());
+		model.addAttribute("newsletter", user.getNewsletter());
+		model.addAttribute("designFan", user.getDesignFan());
 //		
 //		if(user.getInterests()!=null && user.getInterests().size()>0){
 //            model.addAttribute("interests", user.getInterests());
@@ -184,13 +189,13 @@ public class UserController {
 		return "displayUser";
 	}        
 	@RequestMapping(value = "/addNew", method = RequestMethod.GET) 
-	public String addNewSongwriter(ModelMap model) {  
+	public String addNewUser(ModelMap model) {  
 
 //		List<String> interests=new ArrayList<String>();
 //		interests.add("interest1");
 //		interests.add("interst2");
 //		user.setInterests(interests);	
-		model.addAttribute("user", user);		
+		model.addAttribute("user", user);	
 		return "addNewUser";
 	} 
 	@RequestMapping(value = "/delete", method = RequestMethod.GET) 
@@ -200,12 +205,13 @@ public class UserController {
 		return "delete";
 	} 
 	@RequestMapping(value = "/delete/id/{id}", method = RequestMethod.GET) 
-	public String deleteSongwriterbyId(@PathVariable int id, ModelMap model) { 
+	public String deleteUserById(@PathVariable int id, ModelMap model) { 
 		User userDelete = userJpaRepo.findOne(id); 
-		userJpaRepo.delete(userDelete);
+		System.out.println(userDelete);
+		//userJpaRepo.delete(userDelete);
 		//userJpaRepo.delete(id);
 		model.addAttribute("greeting", "User with id "+ id +" and details below have been deleted from the system");
-		model.addAttribute("userName", userDelete.getUserName());
+		model.addAttribute("username", userDelete.getUsername());
 		model.addAttribute("password", userDelete.getPassword());
 		model.addAttribute("userId", userDelete.getUserId());
 		model.addAttribute("newsletter", userDelete.getNewsletter());
@@ -250,7 +256,7 @@ public class UserController {
 		user.setNewsletter(newsletter);
 		userJpaRepo.save(user); 
 		model.addAttribute("message", "User with id "+ id +" has been modified");
-		model.addAttribute("userName", user.getUserName());
+		model.addAttribute("username", user.getUsername());
 		model.addAttribute("password", user.getPassword());
 		model.addAttribute("userId", user.getUserId());
 		model.addAttribute("newsletter", user.getNewsletter());

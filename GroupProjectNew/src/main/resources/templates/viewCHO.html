@@ -29,21 +29,26 @@ $("#view").click(function(){
 
 <body>
 
-
 <div th:replace="layout :: navbar">(navbar)</div>
 <p></p>
 <p></p>
-	
+
+
+
+
 <div class="container">
+<p>This needs to be left here </p>
+<p>This needs to be left here </p>
+
 
 	<p></p>
 	<p></p>
+
   <h2>CH Object
   <a class="btn btn-default glyphicon glyphicon-fire"></a>
   <a class="btn btn-default glyphicon glyphicon-trash"></a>
   </h2>
-  
-  
+ 
   <form th:object="${cho}" role="form" >
   </form>
   
@@ -214,7 +219,9 @@ $("#view").click(function(){
 </tr>
 </tbody>
 </table>
+
 </div>
+
 <div th:include="layout :: footer" id="footer">(footer)</div>
 
 </body>

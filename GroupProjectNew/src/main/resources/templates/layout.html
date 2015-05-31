@@ -56,6 +56,20 @@ $("#find").click(function(){
 });
 </script>
 
+<script type="text/javascript">
+
+$(function() {
+    
+$("#findid").click(function(){          
+       var id = parseInt($("#id").val());
+     
+       var url="/cho/view/id/"+id; 
+       /* window.alert(url); */
+      location.href=url;
+});
+});
+</script>
+
 </head>
 
 <body>
@@ -80,7 +94,7 @@ $("#find").click(function(){
           <span class="caret"></span></a>
           <ul class="dropdown-menu">
           <li><a href="/cho/listall">List all</a></li>
-            <li><a href="/cho/medium">Find by Medium</a></li>
+            <li><a href="/cho/search">Search Options</a></li>
             
           </ul>
         </li>
