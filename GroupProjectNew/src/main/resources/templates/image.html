@@ -14,10 +14,11 @@
 <!-- </div> -->
  
     <div class="col-sm-8">
-    <img class="img-rounded" src="@{image}" width="750px" height="450px"/>
-      <h3>Column 1</h3>
-      <p>Bootstrap layout</p>
-      <p>to be determined</p>
+    <img th:src="${image}" />
+<!--     <img class="img-rounded" th:src="@{${image}}" width="750px" height="450px"/> -->
+<!--       <h3>Column 1</h3> -->
+<!--       <p>Bootstrap layout</p> -->
+<!--       <p>to be determined</p> -->
     </div>
 
 <div th:include="layout :: footer" id="footer">(footer)</div>

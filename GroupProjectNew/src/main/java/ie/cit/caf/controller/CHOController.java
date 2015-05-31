@@ -76,6 +76,11 @@ public class CHOController {
 		model.addAttribute("message", "CH Object with id "+ id +" can now be viewed");
 		model.addAttribute("chobject", chobjectView);
 		model.addAttribute("participations", part); 
+		
+		Images image =  imageRepo.findByChoIdAndImageResolution(id, "Z");
+		String imageUrl = image.getUrl(); 
+		System.out.println(imageUrl);
+		model.addAttribute("image", imageUrl); 
 		return "viewCHO"; } 
 	
 	@RequestMapping(value = "/image/{id}", method = RequestMethod.GET)
@@ -83,6 +88,7 @@ public class CHOController {
 		Images image =  imageRepo.findByChoIdAndImageResolution(id, "B");
 		
 		String imageUrl = image.getUrl(); 
+		System.out.println(imageUrl);
 		model.addAttribute("image", imageUrl); 
 		return "image"; } 
 

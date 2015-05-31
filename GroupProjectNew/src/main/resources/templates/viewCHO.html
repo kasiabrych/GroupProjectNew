@@ -49,8 +49,23 @@ $("#view").click(function(){
   <a class="btn btn-default glyphicon glyphicon-trash"></a>
   </h2>
  
+<!--  <div class="col-sm-8"> -->
+<!--     <img th:src="${image}" /> -->
+<!--     </div> -->
+ 
   <form th:object="${cho}" role="form" >
   </form>
+  
+  <div class="panel-group">
+    <div class="panel panel-default">
+      <div class="panel-heading">Image</div>
+      <div class="panel-body">
+      <div class="col-sm-8">
+    <img th:src="${image}" />
+    </div>
+    </div>
+    </div>
+    </div>
   
   <div class="panel-group">
     <div class="panel panel-default">
