@@ -77,10 +77,12 @@ public class CHOController {
 		model.addAttribute("chobject", chobjectView);
 		model.addAttribute("participations", part); 
 		
-		Images image =  imageRepo.findByChoIdAndImageResolution(id, "Z");
+		Images image =  imageRepo.findByChoIdAndImageResolution(id, "B");
+		if (image!=null){
 		String imageUrl = image.getUrl(); 
 		System.out.println(imageUrl);
 		model.addAttribute("image", imageUrl); 
+		}
 		return "viewCHO"; } 
 	
 	@RequestMapping(value = "/image/{id}", method = RequestMethod.GET)
