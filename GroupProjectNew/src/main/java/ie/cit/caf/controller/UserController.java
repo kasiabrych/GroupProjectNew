@@ -21,7 +21,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
-
+/**
+ * 
+ * @author R00048777
+ * Controller for the User object
+ *
+ */
 @Controller
 @EnableAutoConfiguration
 @RequestMapping("/user")
@@ -31,7 +36,6 @@ public class UserController {
 	UserJpaRepo userJpaRepo; 
 	@Autowired
 	User user; 
-	List<String> interests=new ArrayList <String>();
 	
 /*	@RequestMapping(value={"/signup"}, method = RequestMethod.GET)
 	public String showSignupPage(ModelMap model) { 
@@ -84,7 +88,7 @@ public class UserController {
 	}*/
 
 /**
- * 
+ * Method below returns a list of all users in the system
  * @param model
  * @return list of all users
  * 
@@ -95,25 +99,12 @@ public class UserController {
 		model.addAttribute("users", listUsers);
 		return "displayUsers";			
 	}  
-
-//	@RequestMapping(value="/song/{name}", method = RequestMethod.GET) 
-//	public String listSongwriterBySong(@PathVariable("name") String songName, ModelMap model){
-//		Date date = new java.util.Date();	
-//		List <SongwriterImpl> songwriters=songwriterDAO.listSongWriters(songName);
-//		model.addAttribute("songwriters", songwriters);
-//		model.addAttribute("now", date);
-//		return "displaysongwriters";	
-//	}   
-
-	/*@RequestMapping(value="/song/{name}", method=RequestMethod.GET)
-		 public String listSongwriterBySong1(@PathVariable String name,  ModelMap model){		
-			Date date = new java.util.Date();	
-			List<SongwriterImpl> songwriters=songwriterDAO.listSongWriters(name);
-			model.addAttribute("songwriters", songwriters);
-			model.addAttribute("now", date);
-		    return "displaysongwriter";
-		}*/
-
+/**
+ * Finding a user with a particular username
+ * @param username
+ * @param model
+ * @return
+ */
 	@RequestMapping(value="/list/{userName}", method=RequestMethod.GET)
 	public String listUserByUserName(@PathVariable String username,  ModelMap model){		
 		Date date = new java.util.Date();		
@@ -122,7 +113,12 @@ public class UserController {
 		model.addAttribute("now", date);
 		return "displayUsers";
 	}    
-
+/**
+ * Finding a user with a particular id
+ * @param id
+ * @param model
+ * @return
+ */
 	@RequestMapping(value="/list/id/{id}", method=RequestMethod.GET)
 	public String listUserByID(@PathVariable int id, ModelMap model){		
 		Date date = new java.util.Date();
@@ -133,18 +129,20 @@ public class UserController {
 		model.addAttribute("now", date);
 		return "displayUsers";
 	} 
-//	@RequestMapping(value = "/addNew", method = RequestMethod.GET) 
-//	public ModelAndView addNewUser() {   
-//		return new ModelAndView("addNewUser", "user", new User());
-//	} 
-	
+/**
+ * Method adding a new user. Includes form validation
+ * @param user
+ * @param result
+ * @param model
+ * @return
+ */
 	@RequestMapping(value = "/addNew", method = RequestMethod.POST)
 	public String displayUser(@ModelAttribute("user") @Valid User user,  
 			BindingResult result, ModelMap model) {
-		
+		//form validation, return the form if there are errors
 		if(result.hasErrors())
 			return "addNewUser";                           
-		
+		//attributes
 		model.addAttribute("username", user.getUsername());
 		model.addAttribute("password", user.getPassword()); 
 		model.addAttribute("username", user.getUsername());
@@ -152,14 +150,16 @@ public class UserController {
 		model.addAttribute("userId", user.getUserId());
 		model.addAttribute("newsletter", user.getNewsletter());
 		model.addAttribute("designFan", user.getDesignFan());
-		
+		//setting attributes necessary for authentication
 		user.setEnabled(true);
 		user.setRole("ROLE_USER");
 
 		try {
-			//int id=songwriterDAO.createSongwriterGetID(songwriter.getFirstname(), songwriter.getFirstname(), songwriter.getAge());
+			//saving the user with crud repo methods
 			userJpaRepo.save(user); 
-			int id=user.getUserId(); 
+			//retrieving user id
+			int id=user.getUserId();
+			//attaching id to be displayed
 			model.addAttribute("userId", Integer.toString(id));
 			System.out.println(id);
 		} catch (Exception e) {
@@ -167,18 +167,34 @@ public class UserController {
 		}
 
 		return "displayUser";
-	}        
+	} 
+	/**
+	 * Method passing a blank user bean to for adding a new user
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value = "/addNew", method = RequestMethod.GET) 
 	public String addNewUser(ModelMap model) {  
 		model.addAttribute("user", user);	
 		return "addNewUser";
 	} 
+	/**
+	 * Method displaying a list of users that can be deleted
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value = "/delete", method = RequestMethod.GET) 
 	public String deleteUser(ModelMap model) {   
 		Iterable <User> users=userJpaRepo.findAll();
 		model.addAttribute("users", users);		
 		return "delete";
 	} 
+	/**
+	 * Method deleting a given user
+	 * @param id
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value = "/delete/id/{id}", method = RequestMethod.GET) 
 	public String deleteUserById(@PathVariable int id, ModelMap model) { 
 		User userDelete = userJpaRepo.findOne(id); 
@@ -193,12 +209,23 @@ public class UserController {
 		model.addAttribute("designFan", userDelete.getDesignFan());
 		return "displayUser";
 	} 
+	/**
+	 * Method displaying a list of users that can be modified
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value="/modify", method = RequestMethod.GET) 
 	public String modify(ModelMap model) {			
 		List<User> users=userJpaRepo.findAll();
 		model.addAttribute("users", users);
 		return "modify";			
 	}  
+	/**
+	 * Method displaying the details of the chosen user. 
+	 * @param id
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value = "/modify/id/{id}", method = RequestMethod.GET) 
 	public String modifyUser(@PathVariable int id, ModelMap model) { 
 		User userModify = userJpaRepo.findOne(id); 
@@ -211,25 +238,37 @@ public class UserController {
 //		User user = new User(); 
 //		return new ModelAndView("modifyForm", "user", user);
 //	} 
-//	
+
+	/**
+	 * Method modifying the user and saving the new details to the database
+	 * @param id
+	 * @param password
+	 * @param newsletter
+	 * @param designFan
+	 * @param model
+	 * @param user
+	 * @param result
+	 * @return
+	 */
 	@RequestMapping(value={"/modify/id/{id}/password/{password}/{designFan}/{newsletter}"},  method = RequestMethod.GET) 
 	public String modifyUser(@ModelAttribute("user") 
 		@PathVariable int id, @PathVariable String password, 
 		 @PathVariable boolean newsletter, @PathVariable boolean designFan, 
 			ModelMap model, @Valid User user,  
 			BindingResult result) {	
-		
+		//return the form if there are errors
 		if(result.hasErrors()){
 			user = userJpaRepo.findOne(id); 
 			model.addAttribute("user", user);
 			return "modifyForm";
 		}
-		//userJpaRepo.updatePassword(id, password); 
+		//retrieving the user, saving changes
 		user = userJpaRepo.findOne(id); 
 		user.setPassword(password);
 		user.setDesignFan(designFan);
 		user.setNewsletter(newsletter);
 		userJpaRepo.save(user); 
+		//info to be displayed to the user in confirmation of modification
 		model.addAttribute("message", "User with id "+ id +" has been modified");
 		model.addAttribute("username", user.getUsername());
 		model.addAttribute("password", user.getPassword());

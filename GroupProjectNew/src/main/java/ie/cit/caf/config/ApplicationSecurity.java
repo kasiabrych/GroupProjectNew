@@ -23,7 +23,13 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
-
+/**
+ * 
+ * @author R00048777
+ * 
+ * Application Security class sets up Spring Security
+ *
+ */
 @Order(SecurityProperties.ACCESS_OVERRIDE_ORDER)
 @Configuration
 @EnableWebSecurity
@@ -32,29 +38,27 @@ public class ApplicationSecurity extends WebSecurityConfigurerAdapter {
 	@Autowired
 	@Qualifier("userDetailsService")
 	UserDetailsService userDetailsService;
-
+/**
+ * 
+ * @param auth
+ * @throws Exception
+ * 
+ * Method configures authentication 
+ */
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
 		auth.userDetailsService(userDetailsService);
 		System.out.println(userDetailsService);
 	}
-
-
+/**
+ * Method configures permission strings
+ */
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 
-//		http.authorizeRequests().antMatchers("/admin/**")
-//			.access("hasRole('ROLE_ADMIN')").and().formLogin()
-//			.loginPage("/login").failureUrl("/login?error")
-//			.usernameParameter("username")
-//			.passwordParameter("password")
-//			.and().logout().logoutSuccessUrl("/login?logout")
-//			.and().csrf()
-//			.and().exceptionHandling().accessDeniedPage("/403");
-
 		    	  http
 		          .authorizeRequests().antMatchers("/","/hello", "/user/addNew").permitAll()
-		          .antMatchers("/comment/delete").hasRole("ADMIN")//User.Roles.ROLE_ADMIN.toString())
+		          .antMatchers("/comment/delete").hasRole("ADMIN")
 		          .anyRequest()
 		          .fullyAuthenticated().and().formLogin().loginPage("/login")
 		          .failureUrl("/login?error").permitAll()
@@ -63,6 +67,9 @@ public class ApplicationSecurity extends WebSecurityConfigurerAdapter {
 		          ;
 
 	}
+	/**
+	 * Method configures athentication for in-memory user
+	 */
 //	@Override
 //	public void configure(AuthenticationManagerBuilder auth) throws Exception {
 //		auth.inMemoryAuthentication().withUser("user").password("user").roles("USER");

@@ -57,11 +57,15 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-/*
- * author Kasia Brych (R00048777)
- * AssignmentApplication class: 
- * deserialises .json files into java objects and stores them in the assignment database
+
+/**
  * 
+ * @author R00048777
+ * 
+ * GroupProjectApplication class: 
+ * Converts .json files into java objects and stores them in the assignment database
+ * 
+ *
  */
 @SpringBootApplication
 @ActiveProfiles ("default")
@@ -146,6 +150,7 @@ public class GroupProjectApplication extends WebMvcConfigurerAdapter implements 
 			}
 
 		}
+		//methods below were used for testing 
 		//calling jpaExample to try out jpa
 		//jpaExample(); 
 		//jpaImages(); 

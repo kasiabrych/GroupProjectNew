@@ -20,7 +20,13 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.i18n.CookieLocaleResolver;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
-
+/**
+ * 
+ * @author R00048777
+ * 
+ * This class is necessary to provide for internationalization 
+ *
+ */
 
 @Configuration
 @EnableWebMvc

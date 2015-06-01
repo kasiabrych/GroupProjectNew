@@ -17,6 +17,8 @@ public interface ChoJpaRepo extends CrudRepository <CHObject, Integer>{
 	
 	public List<CHObject> findByDescriptionContains(String word);
 	
+	public List<CHObject> findByCreditlineContains(String word);
+	
 	//this method is not needed, has the same effect as findOne(int id) from CrudRepository
 	public List<Participation> findParticipationsById(int id); 
 
