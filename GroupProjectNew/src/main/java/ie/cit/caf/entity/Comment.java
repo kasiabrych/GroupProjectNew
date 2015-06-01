@@ -1,5 +1,7 @@
 package ie.cit.caf.entity;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,21 +20,29 @@ public class Comment {
 	private int commentId; 
 	private String commentText;
 	private int choId;
+	private String username; 
+	private Date date; 
 	
-	
+
 	public Comment() {
 		super();
 	}
-	public Comment(int commentId, String commentText, int choId) {
+	
+	public Comment(int commentId, String commentText, int choId,
+			String username, Date date) {
 		super();
 		this.commentId = commentId;
 		this.commentText = commentText;
 		this.choId = choId;
+		this.username = username;
+		this.date = date;
 	}
+
 	@Override
 	public String toString() {
 		return "Comment [commentId=" + commentId + ", commentText="
-				+ commentText + ", choId=" + choId + "]";
+				+ commentText + ", choId=" + choId + ", username=" + username
+				+ ", date=" + date + "]";
 	}
 	public int getCommentId() {
 		return commentId;
@@ -52,6 +62,17 @@ public class Comment {
 	public void setChoId(int choId) {
 		this.choId = choId;
 	} 
-	
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	public Date getDate() {
+		return date;
+	}
+	public void setDate(Date date) {
+		this.date = date;
+	}
 	
 }

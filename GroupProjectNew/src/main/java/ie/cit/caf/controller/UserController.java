@@ -83,7 +83,12 @@ public class UserController {
 		return "login";
 	}*/
 
-
+/**
+ * 
+ * @param model
+ * @return list of all users
+ * 
+ */
 	@RequestMapping(value="/listall", method = RequestMethod.GET) 
 	public String listAll(ModelMap model) {				
 		Iterable<User> listUsers=userJpaRepo.findAll(); 

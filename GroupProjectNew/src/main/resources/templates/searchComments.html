@@ -1,0 +1,64 @@
+<html xmlns:th="http://www.thymeleaf.org"> 
+<head th:include="layout :: htmlhead" th:with="title='Search Options'">
+</head>
+<body>
+<div th:replace="layout :: navbar">(navbar)</div>
+
+<div class="container">
+
+<p></p>
+<p></p>
+
+
+<div class="container">
+<p>This needs to be left here </p>
+<p>This needs to be left here </p>
+
+
+<h2>Please specify your search category</h2>
+
+<!-- comment search for choid-->
+<form>
+<div class="form-group">
+<label for="commentChoId" th:text="#{commentId.prompt}" class="control-label"></label>
+<input type="text"  id="commentChoId" class="form-control" />
+</div>
+
+<div class="form-actions">
+<input type="button" value="Find comment by object id" id="findCommentChoId" class="ui-button" />
+</div>
+</form>
+
+<!-- comment search for text like-->
+<form>
+<div class="form-group">
+<label for="commentTextLike" th:text="#{commentText.prompt}" class="control-label"></label>
+<input type="text"  id="cText" class="form-control" />
+</div>
+
+<div class="form-actions">
+<input type="button" value="Find comments containing the words" id="findCText" class="ui-button" />
+</div>
+</form>
+
+<!-- comment search for text like finding a list of objects-->
+<form>
+<div class="form-group">
+<label for="commentTextLike" th:text="#{commentObject.prompt}" class="control-label"></label>
+<input type="text"  id="cObjText" class="form-control" />
+</div>
+
+<div class="form-actions">
+<input type="button" value="Find objects with the comment" id="findCObject" class="ui-button" />
+</div>
+</form>
+
+
+</div>  
+</div>
+
+<div th:include="layout :: footer" id="footer">(footer)</div>
+
+</body>
+
+</html>

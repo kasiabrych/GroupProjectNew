@@ -1,0 +1,36 @@
+<html xmlns:th="http://www.thymeleaf.org"> 
+<head th:include="layout :: htmlhead" th:with="title='Delete Comment'">
+</head>
+<body>
+<div th:replace="layout :: navbar">(navbar)</div>
+<div class="container">
+
+<p>This needs to be left here </p>
+<p>This needs to be left here </p>
+
+<p class="lead" th:text="${greeting}">(greeting)</p>
+<div class="table-responsive">
+<table class="table">
+<thead>
+<tr>
+<th>Comment id</th>
+<th>Object id</th>
+<th>Comment</th>
+
+</tr>
+</thead>
+<tbody>
+<tr th:each="comment : ${comments}">
+     <td th:text="${comment.commentId}"></td>
+      <td th:text="${comment.choId}"></td>
+      <td th:text="${comment.commentText}"></td>  
+    <td><a th:href="@{/comment/delete/id/}+${comment.commentId}" class="ui-btn">Delete</a></td>
+ 
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div th:include="layout :: footer" id="footer">(footer)</div>
+</body>
+</html>                

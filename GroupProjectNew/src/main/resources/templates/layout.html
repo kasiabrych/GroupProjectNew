@@ -116,6 +116,21 @@ $("#findCommentChoId").click(function(){
 });
 </script>
 
+<!-- the script below generates allows users to search for comments that contain certain words -->
+<script type="text/javascript">
+
+$(function() {
+    
+$("#findCObject").click(function(){          
+       var text = $("#cObjText").val();
+     
+       var url="/comment/text/object/"+text; 
+       /* window.alert(url); */
+      location.href=url;
+});
+});
+</script>
+
 </head>
 
 <body>
@@ -174,6 +189,15 @@ $("#findCommentChoId").click(function(){
             <li><a href="/user/addNew">Add New</a></li>
             <li><a href="/user/modify">Modify</a></li>
             <li><a href="/user/delete">Delete</a></li> 
+          </ul>
+        </li>
+         <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Comments
+          <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="/comment/listall">All Comments</a></li>
+            <li><a href="/comment/search">Search Comments</a></li>
+            <li><a href="/comment/delete">Delete</a></li> 
           </ul>
         </li>
       </ul>

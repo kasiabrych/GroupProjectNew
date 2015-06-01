@@ -15,14 +15,18 @@
       <tr>
         <th>Comment id</th>
         <th>Object id</th>
+        <th>User</th>
         <th>Comment</th>
+        <th>Date</th>
       </tr>
     </thead>
     <tbody>
   <tr th:each="comment : ${comments}">
       <td th:text="${comment.commentId}"></td>
       <td th:text="${comment.choId}"></td>
+      <td th:text="${comment.username}"></td>
       <td th:text="${comment.commentText}"></td>
+      <td th:text="${comment.date}"></td>
 </tr>
 </tbody>
 </table>

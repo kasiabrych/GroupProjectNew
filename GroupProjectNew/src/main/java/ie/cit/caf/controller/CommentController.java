@@ -4,12 +4,16 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import ie.cit.caf.entity.CHObject;
 import ie.cit.caf.entity.Comment;
 import ie.cit.caf.entity.User;
+import ie.cit.caf.jparepo.ChoJpaRepo;
 import ie.cit.caf.jparepo.CommentJpaRepo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -25,6 +29,8 @@ public class CommentController {
 
 	@Autowired
 	CommentJpaRepo commentJpaRepo; 
+	@Autowired
+	ChoJpaRepo choJpaRepo; 
 	@Autowired
 	Comment comment; 
 	
@@ -42,9 +48,19 @@ public class CommentController {
 	
 	@RequestMapping(value = "{choid}/addNew", method = RequestMethod.POST)
 	public String displayComment(@ModelAttribute("comment") Comment comment, ModelMap model) {
+		
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+	    String userName = auth.getName(); //get logged in username
+	    
+	    Date date = new java.util.Date();	
+	    comment.setDate(date);
+	    comment.setUsername(userName);
 
 		model.addAttribute("commentText", comment.getCommentText());
 		model.addAttribute("choId", Integer.toString(comment.getChoId()));	
+		model.addAttribute("userName", userName); 
+		model.addAttribute("date", date); 
+		System.out.println(userName+"&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"+date);
 
 		try {
 			commentJpaRepo.save(comment); 
@@ -75,13 +91,51 @@ public class CommentController {
 	
 	@RequestMapping (value="/text/contains/{text}", method = RequestMethod.GET)
 	public String findCommentsByText(@PathVariable String text, ModelMap model){
-
 		List<Comment> commentList = commentJpaRepo.findCommentByCommentTextContains(text);
-
 		model.addAttribute("comments", commentList);
-
 		return "displayComments";
-
 	}
 	
+	@RequestMapping (value="/text/object/{text}", method = RequestMethod.GET)
+	public String findObjectsByTag(@PathVariable String text, ModelMap model){
+		List<Comment> commentList = commentJpaRepo.findCommentByCommentTextContains(text);
+		List <CHObject> objectList = new ArrayList<CHObject>(); 
+		
+		for (Comment c : commentList){
+			
+			int objectId = c.getChoId(); 
+			CHObject objectAdd = choJpaRepo.findOne(objectId); 
+			objectList.add(objectAdd); 
+		}
+		
+		model.addAttribute("CHOs", objectList);
+		model.addAttribute("greeting", "Displaying objects tagged with \""+text+"\":"); 
+		return "displayCHO";
+	}
+	
+	@RequestMapping(value = "/delete", method = RequestMethod.GET) 
+	public String deleteComment(ModelMap model) {   
+		Iterable <Comment> comments=commentJpaRepo.findAll();
+		model.addAttribute("comments", comments);		
+		return "deleteComment";
+	} 
+	@RequestMapping(value = "/delete/id/{id}", method = RequestMethod.GET) 
+	public String deleteCommentById(@PathVariable int id, ModelMap model) { 
+		Comment comDelete = commentJpaRepo.findOne(id); 
+		System.out.println(comDelete);
+		commentJpaRepo.delete(comDelete);
+		//userJpaRepo.delete(id);
+		model.addAttribute("greeting", "You have just deleted comment "+ id);
+		model.addAttribute("commentId", comDelete.getCommentId());
+		model.addAttribute("choId", comDelete.getChoId());
+		model.addAttribute("commentText", comDelete.getCommentText());
+		
+		return "displayComment";
+	} 
+	@RequestMapping (value="/search", method = RequestMethod.GET)
+	public String searchComments(ModelMap model){
+
+		return "searchComments";
+
+	}
 }
