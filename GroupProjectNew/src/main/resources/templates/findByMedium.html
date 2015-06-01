@@ -19,6 +19,18 @@
 
 <form>
 <div class="form-group">
+<label for="keyword" th:text="#{keyword.prompt}" class="control-label"></label>
+<input type="text"  id="key" class="form-control" />
+</div>
+
+<div class="form-actions">
+<input type="button" value="Find by keyword" id="findKey" class="ui-button" />
+</div>
+</form>
+
+
+<form>
+<div class="form-group">
 <label for="medium" th:text="#{medium.prompt}" class="control-label"></label>
 <input type="text"  id="medium" class="form-control" />
 </div>

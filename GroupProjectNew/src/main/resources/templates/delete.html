@@ -15,7 +15,8 @@
 <tr>
 <th>User id</th>
 <th>User name</th>
-<th>Password</th>
+<th>Design Fan</th>
+<th>Newsletter</th>
 
 </tr>
 </thead>
@@ -23,7 +24,11 @@
 <tr th:each="user : ${users}">
      <td th:text="${user.userId}"></td>
      <td th:text="${user.username}"></td>
-      <td th:text="${user.password}"></td>     
+     <td th:if="${user.designFan} == true" th:text="yes"></td>
+		<td th:if="${user.designFan} == false" th:text="no"></td>
+		<td th:if="${user.newsletter} == true" th:text="yes"></td>
+		<td th:if="${user.newsletter} == false" th:text="no"></td>
+        
     <td><a th:href="@{/user/delete/id/}+${user.userId}" class="ui-btn">Delete</a></td>
  
 </tr>

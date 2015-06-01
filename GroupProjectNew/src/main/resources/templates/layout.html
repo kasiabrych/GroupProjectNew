@@ -60,6 +60,20 @@ $("#find").click(function(){
 
 $(function() {
     
+$("#findKey").click(function(){          
+       var key = $("#key").val();
+     
+       var url="/cho/keyword/"+key; 
+       /* window.alert(url); */
+      location.href=url;
+});
+});
+</script>
+
+<script type="text/javascript">
+
+$(function() {
+    
 $("#findid").click(function(){          
        var id = parseInt($("#id").val());
      

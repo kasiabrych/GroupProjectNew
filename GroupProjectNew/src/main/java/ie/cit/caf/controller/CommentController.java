@@ -129,6 +129,8 @@ public class CommentController {
 		model.addAttribute("commentId", comDelete.getCommentId());
 		model.addAttribute("choId", comDelete.getChoId());
 		model.addAttribute("commentText", comDelete.getCommentText());
+		model.addAttribute("date", comDelete.getDate());
+		model.addAttribute("userName", comDelete.getUsername());
 		
 		return "displayComment";
 	} 

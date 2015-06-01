@@ -1,6 +1,9 @@
 package ie.cit.caf.controller;
 
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import ie.cit.caf.domain.CHObject;
 import ie.cit.caf.entity.Images;
@@ -50,6 +53,21 @@ public class CHOController {
 		List<ie.cit.caf.entity.CHObject> choMediumList = choJpaRepo.findByMediumContains(mediumName);
 
 		model.addAttribute("CHOs", choMediumList);
+
+		return "displayCHO";
+
+	}
+	@RequestMapping (value="/keyword/{keyword}", method = RequestMethod.GET)
+	public String choByKeyword(@PathVariable String keyword, ModelMap model){
+
+		List<ie.cit.caf.entity.CHObject> choMediumList = choJpaRepo.findByMediumContains(keyword);
+		List<ie.cit.caf.entity.CHObject> choTitleList = choJpaRepo.findByTitleContains(keyword);
+		List<ie.cit.caf.entity.CHObject> choDescList = choJpaRepo.findByDescriptionContains(keyword);
+		choMediumList.addAll(choTitleList); 
+		choMediumList.addAll(choDescList); 
+		Set set = new HashSet(choMediumList);
+
+		model.addAttribute("CHOs", set);
 
 		return "displayCHO";
 
