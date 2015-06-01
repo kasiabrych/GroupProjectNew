@@ -152,10 +152,9 @@ public class UserController {
 		model.addAttribute("userId", user.getUserId());
 		model.addAttribute("newsletter", user.getNewsletter());
 		model.addAttribute("designFan", user.getDesignFan());
-//		
-//		if(user.getInterests()!=null && user.getInterests().size()>0){
-//            model.addAttribute("interests", user.getInterests());
-//        }
+		
+		user.setEnabled(true);
+		user.setRole("ROLE_USER");
 
 		try {
 			//int id=songwriterDAO.createSongwriterGetID(songwriter.getFirstname(), songwriter.getFirstname(), songwriter.getAge());
@@ -171,11 +170,6 @@ public class UserController {
 	}        
 	@RequestMapping(value = "/addNew", method = RequestMethod.GET) 
 	public String addNewUser(ModelMap model) {  
-
-//		List<String> interests=new ArrayList<String>();
-//		interests.add("interest1");
-//		interests.add("interst2");
-//		user.setInterests(interests);	
 		model.addAttribute("user", user);	
 		return "addNewUser";
 	} 
