@@ -53,7 +53,9 @@ public class ApplicationSecurity extends WebSecurityConfigurerAdapter {
 //			.and().exceptionHandling().accessDeniedPage("/403");
 
 		    	  http
-		          .authorizeRequests().antMatchers("/","/hello").permitAll().anyRequest()
+		          .authorizeRequests().antMatchers("/","/hello").permitAll()
+		          .antMatchers("/comment/delete").hasRole("ADMIN")//User.Roles.ROLE_ADMIN.toString())
+		          .anyRequest()
 		          .fullyAuthenticated().and().formLogin().loginPage("/login")
 		          .failureUrl("/login?error").permitAll()
 		          .and()
