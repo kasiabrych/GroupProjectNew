@@ -38,7 +38,7 @@ $("#view").click(function(){
 
 <div class="container">
 <p>This needs to be left here </p>
-<p>This needs to be left here </p>
+<p></p>
 
 
 	<p></p>
@@ -67,38 +67,38 @@ $("#view").click(function(){
   <div class="panel-group">
     <div class="panel panel-default">
       <div class="panel-heading">ID</div>
-      <div class="panel-body"><p th:text="${id}" ></p></div>
+      <div class="panel-body"><blockquote><p th:text="${id}" ></p></blockquote></div>
     </div>
 
     <div class="panel panel-primary">
       <div class="panel-heading">Title</div>
-      <div class="panel-body"><p th:text="${chobject.title}" ></p></div>
+      <div class="panel-body"><blockquote><p th:text="${chobject.title}" ></p></blockquote></div>
     </div>
 
     <div class="panel panel-success">
       <div class="panel-heading">Date</div>
-      <div class="panel-body"><p th:text="${chobject.date}" ></p></div>
+      <div class="panel-body"><blockquote><p th:text="${chobject.date}" ></p></blockquote></div>
     </div>
 
     <div class="panel panel-info">
       <div class="panel-heading">Medium</div>
-      <div class="panel-body"><p th:text="${chobject.medium}" ></p></div>
+      <div class="panel-body"><blockquote><p th:text="${chobject.medium}" ></p></blockquote></div>
     </div>
 
     <div class="panel panel-warning">
       <div class="panel-heading">CreditLine</div>
-      <div class="panel-body"><p th:text="${chobject.creditline}" ></p></div>
+      <div class="panel-body"><blockquote><p th:text="${chobject.creditline}" ></p></blockquote></div>
     </div>
 	 <p></p>
     <div class="panel panel-danger">
       <div class="panel-heading">Description</div>
-      <div class="panel-body"><p th:text="${chobject.description}" ></p></div>
+      <div class="panel-body"><blockquote><p th:text="${chobject.description}" ></p></blockquote></div>
     </div>
     <p></p>
     <div class="panel-group">
     <div class="panel panel-default">
       <div class="panel-heading">Gallery Text</div>
-      <div class="panel-body"><p th:text="${chobject.gallery_text}" ></p></div>
+      <div class="panel-body"><blockquote><p th:text="${chobject.gallery_text}" ></p></blockquote></div>
     </div>
   </div>
    <form role="form">
@@ -133,7 +133,7 @@ $("#view").click(function(){
   <table class="table table-bordered table-hover">
   <h2>Participated in this object</h2>
   <thead>
-      <tr>
+      <tr class="active">
       	<th>Person ID</th>
         <th>Person Name</th>
         <th>Role Details</th>
@@ -165,7 +165,7 @@ $("#view").click(function(){
       <td><a th:href="${role.role_url -->
       
       
-    <tr th:each="participation : ${participations}">
+    <tr class="info" th:each="participation : ${participations}">
       <td th:text="${participation.participation_id}"></td>
       <td th:text="${participation.participant.person_name}"></td>
       <td th:text="${participation.role}"></td>
@@ -192,7 +192,7 @@ $("#view").click(function(){
  <!--  TABLE WONT BE USED JUST TRYING TO DISPAY DATA -->
   <table class="table table-bordered table-hover">
   <thead>
-      <tr>
+      <tr class="active">
       	<th>Role ID</th>
         <th>Role Name</th>
         <th>Role Display Name</th>
@@ -217,7 +217,7 @@ $("#view").click(function(){
       <td><a th:href="${role.role_url -->
       
       
-    <tr th:each="participation : ${participations}">
+    <tr class="info" th:each="participation : ${participations}">
       <td th:text="${participation.role.role_id}"></td>
       <td th:text="${participation.role.role_name}"></td>
       <td th:text="${participation.role.role_display_name}"></td>

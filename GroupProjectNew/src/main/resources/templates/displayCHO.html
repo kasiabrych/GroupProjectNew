@@ -1,5 +1,12 @@
 <html xmlns:th="http://www.thymeleaf.org"> 
-<head th:include="layout :: htmlhead" th:with="title='Cultural Heritage Objects'"></head>
+<head th:include="layout :: htmlhead" th:with="title='Cultural Heritage Objects'">
+<style type="text/css">
+	body {
+		background-image: url("http://www.personal.psu.edu/nmd5193/Project2%20Subpages/Images/cloud%20background.jpg");
+		}
+</style>
+
+</head>
 <body>
 <div th:replace="layout :: navbar">(navbar)</div>
 <div class="container">
@@ -25,7 +32,7 @@
       </tr>
     </thead>
     <tbody>
-  <tr th:each="cho : ${CHOs}">
+  <tr class="info" th:each="cho : ${CHOs}">
   	  <td th:text="${cho.id}"></td>
       <td th:text="${cho.title}"></td>
       <td th:text="${cho.date}"></td>
