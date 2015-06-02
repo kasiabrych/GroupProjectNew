@@ -19,6 +19,7 @@ import org.springframework.stereotype.Component;
  * @author R00048777
  *
  */
+
 @Entity
 @Table(name="chobjects")
 public class CHObject {

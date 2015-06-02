@@ -56,6 +56,21 @@ $("#find").click(function(){
 });
 </script>
 
+<!-- finding objects for participant -->
+<script type="text/javascript">
+
+$(function() {
+    
+$("#findPartCHO").click(function(){          
+       var name = $("#partName").val();
+     
+       var url="/participants/search/objects/"+name; 
+       /* window.alert(url); */
+      location.href=url;
+});
+});
+</script>
+
 <script type="text/javascript">
 
 $(function() {
@@ -173,7 +188,14 @@ $("#findCObject").click(function(){
             
           </ul>
         </li>
-		<li><a href="/participants/listall">Participants</a></li>
+ 		<li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Participants
+          <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="/participants/listall">List All</a></li>
+            <li><a href="/participants/search">Search Options</a></li>
+          </ul>
+        </li>
 		<li><a href="/roles/listall">Roles</a></li>
 		<li><a href="/images/listall">Images</a></li>
 		<li class="dropdown">

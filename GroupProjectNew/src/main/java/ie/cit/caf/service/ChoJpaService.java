@@ -20,5 +20,7 @@ public interface ChoJpaService {
 
 	public ie.cit.caf.entity.CHObject findOne(int id);
 	
+	public List<CHObject> findCHObjectsByParticipationsParticipationId(int partId); 
+
 
 }

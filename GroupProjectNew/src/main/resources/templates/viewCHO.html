@@ -166,7 +166,7 @@ $("#view").click(function(){
       
       
     <tr class="info" th:each="participation : ${participations}">
-      <td th:text="${participation.participation_id}"></td>
+      <td th:text="${participation.participationId}"></td>
       <td th:text="${participation.participant.person_name}"></td>
       <td th:text="${participation.role}"></td>
       <td th:text="${participation.participant.person_url}"></td>

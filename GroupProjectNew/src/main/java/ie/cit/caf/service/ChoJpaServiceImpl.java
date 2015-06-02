@@ -55,6 +55,12 @@ public class ChoJpaServiceImpl implements ChoJpaService{
 		// TODO Auto-generated method stub
 		return repo.findOne(id);
 	}
+	@Override
+	public List<CHObject> findCHObjectsByParticipationsParticipationId(
+			int partId) {
+		// TODO Auto-generated method stub
+		return repo.findCHObjectsByParticipationsParticipationId(partId);
+	}
 	
 	
 

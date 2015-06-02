@@ -26,5 +26,7 @@ public interface ChoJpaRepo extends CrudRepository <CHObject, Integer>{
 	
 	//this method is not needed, has the same effect as findOne(int id) from CrudRepository
 	public List<Participation> findParticipationsById(int id); 
+	
+	public List<CHObject> findCHObjectsByParticipationsParticipationId(int partId); 
 
 }

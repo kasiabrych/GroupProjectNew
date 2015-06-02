@@ -53,5 +53,11 @@ public class ParticipationJpaServiceImpl implements ParticipationJpaService{
 		// TODO Auto-generated method stub
 		return repo.findRoleByParticipantParticipantId(id);
 	}
+	@Override
+	public Iterable<Participation> findParticipationByParticipantPersonNameContains(
+			String name) {
+		// TODO Auto-generated method stub
+		return repo.findParticipationByParticipantPersonNameContains(name);
+	}
 
 }

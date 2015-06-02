@@ -17,5 +17,7 @@ public interface ParticipationJpaService {
 	public Iterable <Participation> findParticipationByParticipantParticipantId(int id);
 	
 	public Iterable<Role> findRoleByParticipantParticipantId(int id);
+	
+	public Iterable<Participation> findParticipationByParticipantPersonNameContains(String name);
 
 }

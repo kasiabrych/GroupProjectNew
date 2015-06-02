@@ -262,20 +262,17 @@ public class GroupProjectApplication extends WebMvcConfigurerAdapter implements 
 		
 		ie.cit.caf.entity.Images i1 = imagesJpaRepo.findOne(1); 
 		System.out.println("Image 1:"+i1);
-		
-		//I'm not sure why this is not working...
-//		String url = imagesJpaRepo.findUrlByChoIdAndImageResolution(68268203, "B"); 
-//		System.out.println("\n\n^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"
-//				+"url for image 68268203,B: "+url);
-//		String why = "why is this not working"; 
-//		System.out.println(why);
+	
 	}
 	
 	 @Override
 	    public void addViewControllers(ViewControllerRegistry registry) {
 	    registry.addViewController("/login").setViewName("login");
 	    }
-	    
+	    /**
+	     * ApplicationSecurity bean create for user authentication
+	     * @return
+	     */
 	    @Bean
 	    public ApplicationSecurity applicationSecurity() {
 	    return new ApplicationSecurity();

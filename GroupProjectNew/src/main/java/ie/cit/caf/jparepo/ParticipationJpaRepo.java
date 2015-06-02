@@ -23,5 +23,7 @@ public interface ParticipationJpaRepo extends CrudRepository <Participation, Int
 	public Iterable <Participation> findParticipationByParticipantParticipantId(int id);
 	
 	public Iterable<Role> findRoleByParticipantParticipantId(int id);
+	
+	public Iterable<Participation> findParticipationByParticipantPersonNameContains(String name);
 
 }
