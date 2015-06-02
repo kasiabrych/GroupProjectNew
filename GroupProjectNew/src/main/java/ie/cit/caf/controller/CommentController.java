@@ -11,6 +11,7 @@ import ie.cit.caf.entity.Comment;
 import ie.cit.caf.entity.User;
 import ie.cit.caf.jparepo.ChoJpaRepo;
 import ie.cit.caf.jparepo.CommentJpaRepo;
+import ie.cit.caf.service.CommentService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -36,7 +37,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class CommentController {
 
 	@Autowired
-	CommentJpaRepo commentJpaRepo; 
+	CommentService commentService; 
 	@Autowired
 	ChoJpaRepo choJpaRepo; 
 	@Autowired
@@ -83,7 +84,7 @@ public class CommentController {
 		System.out.println(userName+"&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"+date);
 		//saving the comment using jpa repository methods
 		try {
-			commentJpaRepo.save(comment); 
+			commentService.save(comment); 
 			int commentId=comment.getCommentId(); 
 			model.addAttribute("commentId", Integer.toString(commentId));
 		} catch (Exception e) {
@@ -100,7 +101,7 @@ public class CommentController {
 	@RequestMapping(value="/listall", method = RequestMethod.GET) 
 	public String listAll(ModelMap model) {			
 			//using jpa crud repository methods to obtain a list of comments
-			Iterable<Comment> commentList=commentJpaRepo.findAll();
+			Iterable<Comment> commentList=commentService.findAll();
 			model.addAttribute("comments", commentList);
 		    return "displayComments";			
 		}  
@@ -113,7 +114,7 @@ public class CommentController {
 	@RequestMapping(value="/list/id/{choid}", method=RequestMethod.GET)
 	public String listCommentByChoID(@PathVariable int choid, ModelMap model){		
 		Date date = new java.util.Date();
-		List <Comment> comments = commentJpaRepo.findCommentByChoId(choid); 
+		List <Comment> comments = commentService.findCommentByChoId(choid); 
 		model.addAttribute("comments", comments);
 		model.addAttribute("now", date);
 		return "displayComments";
@@ -126,7 +127,7 @@ public class CommentController {
 	 */
 	@RequestMapping (value="/text/contains/{text}", method = RequestMethod.GET)
 	public String findCommentsByText(@PathVariable String text, ModelMap model){
-		List<Comment> commentList = commentJpaRepo.findCommentByCommentTextContains(text);
+		List<Comment> commentList = commentService.findCommentByCommentTextContains(text);
 		model.addAttribute("comments", commentList);
 		return "displayComments";
 	}
@@ -139,7 +140,7 @@ public class CommentController {
 	@RequestMapping (value="/text/object/{text}", method = RequestMethod.GET)
 	public String findObjectsByTag(@PathVariable String text, ModelMap model){
 		//obtaining a list of comments that contain the given word
-		List<Comment> commentList = commentJpaRepo.findCommentByCommentTextContains(text);
+		List<Comment> commentList = commentService.findCommentByCommentTextContains(text);
 		//creating a list to hold objects
 		List <CHObject> objectList = new ArrayList<CHObject>(); 
 		//iterating through commentList to generate a list of objects that the given word/comment refers to
@@ -163,7 +164,7 @@ public class CommentController {
 	 */
 	@RequestMapping(value = "/delete", method = RequestMethod.GET) 
 	public String deleteComment(ModelMap model) {   
-		Iterable <Comment> comments=commentJpaRepo.findAll();
+		Iterable <Comment> comments=commentService.findAll();
 		model.addAttribute("comments", comments);		
 		return "deleteComment";
 	} 
@@ -176,10 +177,10 @@ public class CommentController {
 	@RequestMapping(value = "/delete/id/{id}", method = RequestMethod.GET) 
 	public String deleteCommentById(@PathVariable int id, ModelMap model) { 
 		//find comment to be deleted
-		Comment comDelete = commentJpaRepo.findOne(id); 
+		Comment comDelete = commentService.findOne(id); 
 		System.out.println(comDelete);
 		//delete comment using crud repo delete
-		commentJpaRepo.delete(comDelete);
+		commentService.delete(comDelete);
 		//list of information to be displayed to the user in confirmation
 		model.addAttribute("greeting", "You have just deleted comment "+ id);
 		model.addAttribute("commentId", comDelete.getCommentId());

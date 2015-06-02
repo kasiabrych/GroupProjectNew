@@ -41,8 +41,8 @@ public class User {
 	@Size(min=2, max=20, message="The password must be between 2 and 20 characters")
 	private String password;
 	private boolean enabled; 
-	@ElementCollection
-	private Set<UserRole> userRole = new HashSet<UserRole>(0);
+//	@ElementCollection
+//	private Set<UserRole> userRole = new HashSet<UserRole>(0);
 	
 	private String role; 
 	
@@ -67,13 +67,6 @@ public class User {
 		this.enabled = enabled;
 	}
  
-	public User(String username, String password, 
-		boolean enabled, Set<UserRole> userRole) {
-		this.username = username;
-		this.password = password;
-		this.enabled = enabled;
-		this.userRole = userRole;
-	}
 	@Override
 	public String toString() {
 		return "User [userId=" + userId + ", username=" + username
@@ -122,15 +115,15 @@ public class User {
 	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
 	}
-	@ElementCollection
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
-	public Set<UserRole> getUserRole() {
-		return this.userRole;
-	}
- 
-	public void setUserRole(Set<UserRole> userRole) {
-		this.userRole = userRole;
-	}
+//	@ElementCollection
+//	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+//	public Set<UserRole> getUserRole() {
+//		return this.userRole;
+//	}
+// 
+//	public void setUserRole(Set<UserRole> userRole) {
+//		this.userRole = userRole;
+//	}
 	public String getRole() {
 		return role;
 	}

@@ -2,6 +2,7 @@ package ie.cit.caf.controller;
 
 import ie.cit.caf.entity.User;
 import ie.cit.caf.jparepo.UserJpaRepo;
+import ie.cit.caf.service.UserService;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -199,7 +200,7 @@ public class UserController {
 	public String deleteUserById(@PathVariable int id, ModelMap model) { 
 		User userDelete = userJpaRepo.findOne(id); 
 		System.out.println(userDelete);
-		//userJpaRepo.delete(userDelete);
+		userJpaRepo.delete(userDelete);
 		//userJpaRepo.delete(id);
 		model.addAttribute("greeting", "User with id "+ id +" and details below have been deleted from the system");
 		model.addAttribute("username", userDelete.getUsername());
