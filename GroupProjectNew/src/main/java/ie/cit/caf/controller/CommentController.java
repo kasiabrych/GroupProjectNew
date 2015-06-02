@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import ie.cit.caf.entity.CHObject;
 import ie.cit.caf.entity.Comment;
 import ie.cit.caf.entity.User;
@@ -16,6 +18,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -58,7 +61,13 @@ public class CommentController {
 	 * @return
 	 */
 	@RequestMapping(value = "{choid}/addNew", method = RequestMethod.POST)
-	public String displayComment(@ModelAttribute("comment") Comment comment, ModelMap model) {
+	public String displayComment(@ModelAttribute("comment")@Valid Comment comment,  
+			BindingResult result, ModelMap model) {
+		
+		//form validation, return the form if there are errors
+				if(result.hasErrors())
+					return "addComment";  
+				
 		//get the username of the current user and set it as comment.username
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 	    String userName = auth.getName(); 

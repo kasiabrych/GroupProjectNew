@@ -11,11 +11,11 @@
 
 <h2>Please enter your comment. </h2>
 <form action="#" method="post" th:object="${comment}" th:action="@{addNew}" class="form-horizontal" role="form" >
-<!-- <div> -->
-<!-- <ul th:if="${#fields.hasErrors('*')}" class="list-group" > -->
-<!--   <li th:each="err : ${#fields.errors('*')}" th:text="${err}" class="list-group-item list-group-item-danger">Input is incorrect</li>   -->
-<!-- </ul> -->
-<!-- </div> -->
+<div>
+<ul th:if="${#fields.hasErrors('*')}" class="list-group" >
+  <li th:each="err : ${#fields.errors('*')}" th:text="${err}" class="list-group-item list-group-item-danger">Input is incorrect</li>  
+</ul>
+</div>
 
 <div class="form-group">
 <label for="choId" th:text="#{comment.choId}" class="control-label"></label>

@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 
 import org.springframework.stereotype.Component;
 
@@ -18,6 +19,7 @@ public class Comment {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int commentId; 
+	@Size(min=2, message="Please enter a valid comment")
 	private String commentText;
 	private int choId;
 	private String username; 
