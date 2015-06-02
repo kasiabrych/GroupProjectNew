@@ -2,6 +2,7 @@ package ie.cit.caf.controller;
 
 import ie.cit.caf.jparepo.ParticipantJpaRepo;
 import ie.cit.caf.repository.ParticipantRepository;
+import ie.cit.caf.service.ParticipantService;
 
 import java.util.List;
 
@@ -17,15 +18,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class ParticipantsController {
 	
 	@Autowired
-	ParticipantRepository participantRep;
-	
-	@Autowired
-	ParticipantJpaRepo participantJpaRepo;
+	ParticipantService participantServ;
 	
 	@RequestMapping(value="/listall", method = RequestMethod.GET) 
 	public String listAll(ModelMap model) {			
 			
-			List<ie.cit.caf.domain.Participant> listParticipant=participantRep.findAll();
+			List<ie.cit.caf.domain.Participant> listParticipant=participantServ.findAll();
 			model.addAttribute("Participants", listParticipant);
 		    return "displayParticipants";			
 		}    

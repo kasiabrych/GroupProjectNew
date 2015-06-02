@@ -2,6 +2,7 @@ package ie.cit.caf.controller;
 
 import ie.cit.caf.jparepo.RoleJpaRepo;
 import ie.cit.caf.repository.RoleRepository;
+import ie.cit.caf.service.RoleService;
 
 import java.util.List;
 
@@ -17,15 +18,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class RoleController {
 	
 	@Autowired
-	RoleRepository roleRep;
-	
-	@Autowired
-	RoleJpaRepo roleJpaRepo;
+	RoleService roleServ;
 	
 	@RequestMapping(value="/listall", method = RequestMethod.GET) 
 	public String listAll(ModelMap model) {			
 			
-			List<ie.cit.caf.domain.Role> listRole=roleRep.findAll();
+			List<ie.cit.caf.domain.Role> listRole=roleServ.findAll();
 			model.addAttribute("Roles", listRole);
 		    return "displayRoles";			
 		}    

@@ -11,6 +11,7 @@ import ie.cit.caf.entity.Comment;
 import ie.cit.caf.entity.User;
 import ie.cit.caf.jparepo.ChoJpaRepo;
 import ie.cit.caf.jparepo.CommentJpaRepo;
+import ie.cit.caf.service.ChoJpaService;
 import ie.cit.caf.service.CommentService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +40,7 @@ public class CommentController {
 	@Autowired
 	CommentService commentService; 
 	@Autowired
-	ChoJpaRepo choJpaRepo; 
+	ChoJpaService choJpaServ; 
 	@Autowired
 	Comment comment; 
 	/**
@@ -148,7 +149,7 @@ public class CommentController {
 			//getting id for object
 			int objectId = c.getChoId(); 
 			//finding object
-			CHObject objectAdd = choJpaRepo.findOne(objectId); 
+			CHObject objectAdd = choJpaServ.findOne(objectId); 
 			//adding object to list
 			objectList.add(objectAdd); 
 		}

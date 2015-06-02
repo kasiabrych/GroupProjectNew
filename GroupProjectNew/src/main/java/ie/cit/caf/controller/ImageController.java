@@ -2,6 +2,8 @@ package ie.cit.caf.controller;
 
 import ie.cit.caf.jparepo.ImagesJpaRepo;
 import ie.cit.caf.repository.ImageRepository;
+import ie.cit.caf.service.ImageService;
+import ie.cit.caf.service.ImagesJpaService;
 
 import java.util.List;
 
@@ -17,15 +19,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class ImageController {
 	
 	@Autowired
-	ImageRepository imageRep;
+	ImageService imageServ;
 	
 	@Autowired
-	ImagesJpaRepo imageJpaRepo;
+	ImagesJpaService imageJpaServ;
 	
 	@RequestMapping(value="/listall", method = RequestMethod.GET) 
 	public String listAll(ModelMap model) {			
 			
-			List<ie.cit.caf.domain.Image> listImage=imageRep.findAll();
+			List<ie.cit.caf.domain.Image> listImage=imageServ.findAll();
 			model.addAttribute("Images", listImage);
 		    return "displayImages";			
 		}    
@@ -52,7 +54,7 @@ public class ImageController {
 	@RequestMapping(value="/listall/{resolution}", method = RequestMethod.GET) 
 	public String listAllResolution(@PathVariable String resolution, ModelMap model) {			
 			
-			List<ie.cit.caf.entity.Images> listImage=imageJpaRepo.findByImageResolution(resolution); 
+			List<ie.cit.caf.entity.Images> listImage=imageJpaServ.findByImageResolution(resolution); 
 			model.addAttribute("Images", listImage);
 		    return "displayImages";			
 		}  
