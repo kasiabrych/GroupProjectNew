@@ -1,5 +1,11 @@
 <html xmlns:th="http://www.thymeleaf.org"> 
-<head th:include="layout :: htmlhead" th:with="title='Participants'"></head>
+<head th:include="layout :: htmlhead" th:with="title='Participants'">
+<style type="text/css">
+	body {
+		background-image: url("http://www.personal.psu.edu/nmd5193/Project2%20Subpages/Images/cloud%20background.jpg");
+		}
+</style>
+</head>
 
 <body>
 <div th:replace="layout :: navbar">(navbar)</div>
@@ -13,7 +19,7 @@
   <p></p>            
   <table class="table table-bordered table-hover">
   <thead>
-      <tr>
+      <tr class="active">
         <th>Participant ID</th>
         <th>Person ID</th>
         <th>Person Name</th>
@@ -23,7 +29,7 @@
       </tr>
     </thead>
     <tbody>
-  <tr th:each="participant : ${Participants}">
+  <tr class="info" th:each="participant : ${Participants}">
       <td th:text="${participant.participant_id}"></td>
       <td th:text="${participant.person_id}"></td>
       <td th:text="${participant.person_name}"></td>

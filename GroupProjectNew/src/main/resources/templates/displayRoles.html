@@ -1,5 +1,11 @@
 <html xmlns:th="http://www.thymeleaf.org"> 
-<head th:include="layout :: htmlhead" th:with="title='Roles'"></head>
+<head th:include="layout :: htmlhead" th:with="title='Roles'">
+<style type="text/css">
+	body {
+		background-image: url("http://www.personal.psu.edu/nmd5193/Project2%20Subpages/Images/cloud%20background.jpg");
+		}
+</style>
+</head>
 
 <body>
 <div th:replace="layout :: navbar">(navbar)</div>
@@ -10,9 +16,10 @@
 <div class="container">
   <h2>Role Table</h2>
   <p></p>            
+  
   <table class="table table-bordered table-hover">
   <thead>
-      <tr>
+      <tr class="active">
         <th>Role Number</th>
         <th>Role ID</th>
         <th>Role Name</th>
@@ -22,7 +29,7 @@
       </tr>
     </thead>
     <tbody>
-  <tr th:each="role : ${Roles}">
+  <tr class = "info" th:each="role : ${Roles}">
       <td th:text="${role.role_no}"></td>
       <td th:text="${role.role_id}"></td>
       <td th:text="${role.role_name}"></td>
