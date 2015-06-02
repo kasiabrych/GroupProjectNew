@@ -9,7 +9,11 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
-
+/**
+ * Role entity to be used with jpa repository. 
+ * @author R00048777
+ *
+ */
 @Entity
 @Table(name="roles")
 public class Role implements Serializable{

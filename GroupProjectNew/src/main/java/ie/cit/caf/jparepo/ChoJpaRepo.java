@@ -7,7 +7,12 @@ import ie.cit.caf.entity.Participation;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
-
+/**
+ * Repository interface for CHbject. 
+ * Implements CrudRepository and contains some additional method signatures for finding objects. 
+ * @author R00048777
+ *
+ */
 @Repository
 public interface ChoJpaRepo extends CrudRepository <CHObject, Integer>{
 	

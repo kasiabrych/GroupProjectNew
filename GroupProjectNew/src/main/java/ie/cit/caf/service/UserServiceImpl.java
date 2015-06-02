@@ -9,7 +9,13 @@ import org.springframework.stereotype.Service;
 
 import ie.cit.caf.entity.User;
 import ie.cit.caf.jparepo.UserJpaRepo;
-
+/**
+ * Implementation of service layer for User entity. 
+ * UserJpaRepo autowired. 
+ * Code commented out due to autowiring conflicts with the UserDaoImpl class for the moment
+ * @author R00048777
+ *
+ */
 @Service
 public class UserServiceImpl //implements UserService
 {

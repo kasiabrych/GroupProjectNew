@@ -12,7 +12,12 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
- 
+ /**
+  * Implementation of UserJpaRepo interface. 
+  * It is necessary for user authentication purposes
+  * @author R00048777
+  *
+  */
 @Repository
 public class UserDaoImpl implements UserJpaRepo {
  
@@ -48,16 +53,11 @@ public class UserDaoImpl implements UserJpaRepo {
 
 	@Override
 	public void delete(Integer id) {
-//		// TODO Auto-generated method stub
-//		String sql = "DELETE FROM users WHERE userId = ?";
-//		jdbcTemplate.update(sql, new Object[] { id } );
-//		
+
 	}
 
 	@Override
 	public void delete(User user) {
-//		String sql = "DELETE FROM users WHERE userId = ?";
-//		jdbcTemplate.update(sql, new Object[] { user.getUserId() } );
 		
 	}
 

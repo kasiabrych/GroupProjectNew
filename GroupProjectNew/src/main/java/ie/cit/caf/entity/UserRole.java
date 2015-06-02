@@ -11,9 +11,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
-//	uniqueConstraints = @UniqueConstraint(
-//		columnNames = { "role", "username" })) 
 
+/**
+ * This class is not utilized at the moment, as user role is stored in the user table rather than a separate table. 
+ * It contains a user object and user's authorities. 
+ * @author R00048777
+ *
+ */
 @Entity
 @Table(name = "user_roles")
 public class UserRole{

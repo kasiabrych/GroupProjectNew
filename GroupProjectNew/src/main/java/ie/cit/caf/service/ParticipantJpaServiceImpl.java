@@ -5,7 +5,11 @@ import org.springframework.stereotype.Service;
 
 import ie.cit.caf.entity.Participant;
 import ie.cit.caf.jparepo.ParticipantJpaRepo;
-
+/**
+ * Service for Participant entity implemented here
+ * @author R00048777
+ *
+ */
 @Service
 public class ParticipantJpaServiceImpl implements ParticipantJpaService{
 	

@@ -8,6 +8,13 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+/**
+ * Implementation of service for Images entity. 
+ * ImagesJpaRepo autowired. 
+ * @author R00048777
+ *
+ */
 @Service
 public class ImagesJpaServiceImpl implements ImagesJpaService{
 	

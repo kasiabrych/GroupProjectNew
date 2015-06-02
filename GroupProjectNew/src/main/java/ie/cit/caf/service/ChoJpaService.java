@@ -3,7 +3,11 @@ package ie.cit.caf.service;
 import ie.cit.caf.entity.CHObject;
 
 import java.util.List;
-
+/**
+ * Service interface for CHObject entity
+ * @author R00048777
+ *
+ */
 public interface ChoJpaService {
 	
 	public List<CHObject> findByMediumContains(String mediumName);

@@ -14,7 +14,11 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
-
+/**
+ * CHObject class to be used with jpa repository
+ * @author R00048777
+ *
+ */
 @Entity
 @Table(name="chobjects")
 public class CHObject {
@@ -83,15 +87,6 @@ public class CHObject {
 	public void setGallery_text(String gallery_text) {
 		this.gallery_text = gallery_text;
 	}
-//	public List<Map<String, Image>> getImages() {
-//		return images;
-//	}
-//	public void setImages(List<Map<String, Image>> images) {
-//		this.images = images;
-//	}
-	//	@JsonUnwrapped
-//	@JsonProperty ("participants")
-//	private List<Participation> participations; 
 	public List<Participation> getParticipations() {
 		return participations;
 	}

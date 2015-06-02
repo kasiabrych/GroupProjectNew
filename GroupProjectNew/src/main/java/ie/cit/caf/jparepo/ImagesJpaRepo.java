@@ -6,7 +6,12 @@ import ie.cit.caf.entity.Images;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
-
+/**
+ * Repository interface for Images. 
+ * Implements CrudRepository and contains some additional method signatures for finding images. 
+ * @author R00048777
+ *
+ */
 @Repository
 public interface ImagesJpaRepo extends CrudRepository <Images, Integer>{
 	

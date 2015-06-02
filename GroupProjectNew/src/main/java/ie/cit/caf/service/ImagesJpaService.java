@@ -3,7 +3,11 @@ package ie.cit.caf.service;
 import ie.cit.caf.entity.Images;
 
 import java.util.List;
-
+/**
+ * Service interface for Images entity. 
+ * @author R00048777
+ *
+ */
 public interface ImagesJpaService {
 
 	public List<Images> findByWidth(String width);

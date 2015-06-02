@@ -10,7 +10,11 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
-
+/**
+ * Participant entity to be used with jpa repository
+ * @author R00048777
+ *
+ */
 @Entity
 @Table(name="participants")
 public class Participant implements Serializable{

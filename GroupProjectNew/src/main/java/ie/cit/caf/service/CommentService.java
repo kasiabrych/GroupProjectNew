@@ -6,7 +6,11 @@ import ie.cit.caf.entity.User;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
-
+/**
+ * Service class for Comment entity. 
+ * @author R00048777
+ *
+ */
 @Service
 public interface CommentService {
 	

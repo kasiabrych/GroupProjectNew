@@ -27,7 +27,14 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
-
+/**
+ * User entity to be used with jpa repository
+ * Includes criteria for form validation. 
+ * User class includes a String role attribute and a method to convert the String 
+ * into an ArrayList that can be used in MyUserDetailsService to build a user for authentication
+ * @author R00048777
+ *
+ */
 @Component
 @Entity
 @Table(name="users")
@@ -130,10 +137,14 @@ public class User {
 	public void setRole(String role) {
 		this.role = role;
 	}
-	
+	/**
+	 * Converts String role into an arrayList that is required for user authentication. 
+	 * @param role2
+	 * @return
+	 */
 	public ArrayList<String> convertRole(String role2) {
 		ArrayList<String> roleConverted = new ArrayList<String>(); 
-		roleConverted.add(role); 
+		roleConverted.add(role2); 
 		return roleConverted; 
 	}
 }

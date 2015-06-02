@@ -10,7 +10,12 @@ import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
 import org.springframework.stereotype.Component;
-
+/**
+ * Comment entity to be used with jpa repository. 
+ * Includes validation criteria for validating comments. 
+ * @author R00048777
+ *
+ */
 @Component
 @Entity
 @Table(name="comments")
@@ -25,7 +30,6 @@ public class Comment {
 	private String username; 
 	private Date date; 
 	
-
 	public Comment() {
 		super();
 	}

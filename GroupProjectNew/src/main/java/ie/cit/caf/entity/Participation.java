@@ -12,7 +12,12 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
-
+/**
+ * Participation entity to be used with jpa repository. 
+ * Includes table joining in order to populate cho.participation list
+ * @author R00048777
+ *
+ */
 @Entity
 @Table(name="object_participant_role")
 public class Participation {

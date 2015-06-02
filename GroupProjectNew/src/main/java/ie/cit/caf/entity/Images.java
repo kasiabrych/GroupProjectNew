@@ -11,7 +11,11 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
+/**
+ * Images class to be used with jpa repository. 
+ * @author R00048777
+ *
+ */
 @Entity
 @Table(name="images")
 public class Images {

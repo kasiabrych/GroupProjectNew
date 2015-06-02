@@ -7,7 +7,12 @@ import ie.cit.caf.entity.Participant;
 import ie.cit.caf.entity.Participation;
 import ie.cit.caf.entity.Role;
 import ie.cit.caf.jparepo.ParticipationJpaRepo;
-
+/**
+ * Implementation of service layer for Participation. 
+ * ParticipationJpaRepo autowired. 
+ * @author R00048777
+ *
+ */
 @Service
 public class ParticipationJpaServiceImpl implements ParticipationJpaService{
 	
