@@ -24,11 +24,14 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"
       th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js}"></script>
 
+<!-- the following javascripts generate urls for search functions and user details modification -->
+<!-- author: Kasia Brych (R00048777) -->
 
+<!-- modify fro users details -->
 <script type="text/javascript">
 
-$(function() {
-    
+$(function() { 
+	
 $("#modify").click(function(){          
        var password = $("#password").val();
        var id = $("#id").val();
@@ -41,7 +44,7 @@ $("#modify").click(function(){
 });
 </script>
 
-
+<!-- search by medium for CHOs -->
 <script type="text/javascript">
 
 $(function() {
@@ -71,6 +74,7 @@ $("#findPartCHO").click(function(){
 });
 </script>
 
+<!-- finding object by keyword -->
 <script type="text/javascript">
 
 $(function() {
@@ -85,6 +89,7 @@ $("#findKey").click(function(){
 });
 </script>
 
+<!-- finding objects by id -->
 <script type="text/javascript">
 
 $(function() {

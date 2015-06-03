@@ -1,3 +1,5 @@
+<!-- author: Kasia Brych (R00048777) -->
+
 <html xmlns:th="http://www.thymeleaf.org"> 
 <head th:include="layout :: htmlhead" th:with="title='Search Options'">
 </head>
@@ -6,18 +8,15 @@
 
 <div class="container">
 
-<p></p>
-<p></p>
-
-
 <div class="container">
+
 <p>This needs to be left here </p>
 <p>This needs to be left here </p>
-
-
 
 <h2>Please specify your search category</h2>
 
+<!-- all searches supported with javascript scripts in layout file -->
+<!-- searching by keyword --> 
 <form>
 <div class="form-group">
 <label for="keyword" th:text="#{keyword.prompt}" class="control-label"></label>
@@ -29,7 +28,7 @@
 </div>
 </form>
 
-
+<!-- searching by medium -->
 <form>
 <div class="form-group">
 <label for="medium" th:text="#{medium.prompt}" class="control-label"></label>
@@ -41,6 +40,7 @@
 </div>
 </form>
 
+<!-- searching by id -->
 <form>
 <div class="form-group">
 <label for="id" th:text="#{id.prompt}" class="control-label"></label>

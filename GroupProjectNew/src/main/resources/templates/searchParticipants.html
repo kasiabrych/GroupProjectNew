@@ -1,3 +1,5 @@
+<!-- author: Kasia Brych (R00048777) -->
+
 <html xmlns:th="http://www.thymeleaf.org"> 
 <head th:include="layout :: htmlhead" th:with="title='Search Options'">
 </head>
@@ -5,10 +7,6 @@
 <div th:replace="layout :: navbar">(navbar)</div>
 
 <div class="container">
-
-<p></p>
-<p></p>
-
 
 <div class="container">
 <p>This needs to be left here </p>
@@ -18,6 +16,7 @@
 
 <h2>Please specify your search category</h2>
 
+<!-- finding a list of objects in which a given participant have been involved in -->
 <form>
 <div class="form-group">
 <label for="partName" th:text="#{partNameSearch.prompt}" class="control-label"></label>
@@ -28,29 +27,6 @@
 <input type="button" value="Find Objects for Participant" id="findPartCHO" class="ui-button" />
 </div>
 </form>
-
-
-<!-- <form> -->
-<!-- <div class="form-group"> -->
-<!-- <label for="medium" th:text="#{medium.prompt}" class="control-label"></label> -->
-<!-- <input type="text"  id="medium" class="form-control" /> -->
-<!-- </div> -->
-
-<!-- <div class="form-actions"> -->
-<!-- <input type="button" value="Find by medium" id="find" class="ui-button" /> -->
-<!-- </div> -->
-<!-- </form> -->
-
-<!-- <form> -->
-<!-- <div class="form-group"> -->
-<!-- <label for="id" th:text="#{id.prompt}" class="control-label"></label> -->
-<!-- <input type="text"  id="id" class="form-control" /> -->
-<!-- </div> -->
-
-<!-- <div class="form-actions"> -->
-<!-- <input type="button" value="Find by ID" id="findid" class="ui-button" /> -->
-<!-- </div> -->
-<!-- </form> -->
 
 </div>  
 </div>
