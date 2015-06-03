@@ -18,6 +18,16 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+/**
+ * 
+ * @author R00131247 Graham Ó Síocháin
+ * 
+ * Participant controller: 
+ * Controller class for Participants.
+ * 
+ *
+ */
+
 @Controller
 @RequestMapping("/participants")
 public class ParticipantsController {

@@ -14,6 +14,17 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+/**
+ * 
+ * @author R00131247 Graham Ó Síocháin
+ * 
+ * Image controller: 
+ * Controller class for Images.
+ * 
+ *
+ */
+
+
 @Controller
 @RequestMapping("/images")
 public class ImageController {

@@ -8,6 +8,16 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+/**
+ * 
+ * @author R00131247 Graham Ó Síocháin
+ * 
+ * About controller: 
+ * Controller class for About.
+ * 
+ *
+ */
+
 @Controller
 @EnableAutoConfiguration
 public class AboutController {

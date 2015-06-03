@@ -13,6 +13,16 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+/**
+ * 
+ * @author R00131247 Graham Ó Síocháin
+ * 
+ * Role controller: 
+ * Controller class for Roles.
+ * 
+ *
+ */
+
 @Controller
 @RequestMapping("/roles")
 public class RoleController {
