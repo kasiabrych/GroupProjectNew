@@ -25,7 +25,7 @@ import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 /**
  * 
- * @author R00048777
+ * @author R00048777 Kasia Brych
  * 
  * Application Security class sets up Spring Security
  *
@@ -58,7 +58,7 @@ public class ApplicationSecurity extends WebSecurityConfigurerAdapter {
 
 		    	  http
 		          .authorizeRequests().antMatchers("/","/hello", "/user/addNew").permitAll()
-		          .antMatchers("/comment/delete").hasRole("ADMIN")
+		          .antMatchers("/comment/delete/**", "/user/delete/**").hasRole("ADMIN")
 		          .anyRequest()
 		          .fullyAuthenticated().and().formLogin().loginPage("/login")
 		          .failureUrl("/login?error").permitAll()

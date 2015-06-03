@@ -60,7 +60,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 /**
  * 
- * @author R00048777
+ * @author R00048777 Kasia Brych
  * 
  * GroupProjectApplication class: 
  * Converts .json files into java objects and stores them in the assignment database

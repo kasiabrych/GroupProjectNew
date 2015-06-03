@@ -22,9 +22,9 @@ import org.springframework.web.servlet.i18n.CookieLocaleResolver;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 /**
  * 
- * @author R00048777
+ * @author R00048777 Kasia Brych
  * 
- * This class is necessary to provide for internationalization 
+ * This class is necessary to provide internationalization support
  *
  */
 

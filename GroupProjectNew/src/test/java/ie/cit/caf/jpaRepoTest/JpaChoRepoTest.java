@@ -17,7 +17,17 @@ import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
-
+/**
+ * Attempt at testing the jpa repo methods. 
+ * This class is unnecessary in the current form, 
+ * because it tests mainly CrudRepository methods that are provided by Spring. 
+ * 
+ * Also, testing based on a restricted sample collection rather than the whole collection. 
+ * 
+ * More extensive testing was meant to be added to the project, failed due to time constraints. 
+ * @author R00048777
+ *
+ */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = DefaultConfig.class)
 @TransactionConfiguration(defaultRollback=true) 
@@ -59,6 +69,13 @@ public class JpaChoRepoTest {
 		repo.save(cho);
 		Iterable<ie.cit.caf.entity.CHObject> choList = repo.findAll();
 		assertEquals(36, ((Collection<ie.cit.caf.entity.CHObject>) choList).size());
+	}
+	@Test
+	public void findByMediumContains() {
+		
+		Iterable<ie.cit.caf.entity.CHObject> choList = repo.findByMediumContains("paper");
+		assertEquals(4, ((Collection<ie.cit.caf.entity.CHObject>) choList).size());
+		
 	}
 
 }

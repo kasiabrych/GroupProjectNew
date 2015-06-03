@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 /**
  * Repository interface for CHbject. 
  * Implements CrudRepository and contains some additional method signatures for finding objects. 
- * @author R00048777
+ * @author R00048777 Kasia Brych
  *
  */
 @Repository

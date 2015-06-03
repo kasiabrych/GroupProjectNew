@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  * 
- * @author R00048777
+ * @author R00048777 Kasia Brych
  * 
  * Controller class for CHObject 
  *
